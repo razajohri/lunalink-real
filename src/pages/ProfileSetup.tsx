@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
-import lunaLinkLogo from "@/assets/lunalink-logo.jpg";
 
 const ProfileSetup = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -92,7 +91,7 @@ const ProfileSetup = () => {
             <div className="text-center space-y-4">
               <div className="flex items-center justify-center space-x-3">
                 <img 
-                  src={lunaLinkLogo} 
+                  src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png" 
                   alt="LunaLink AI" 
                   className="h-10 w-auto"
                 />

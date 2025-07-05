@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Phone, MessageSquare, BarChart, Users } from "lucide-react";
-import lunaLinkLogo from "@/assets/lunalink-logo.jpg";
 
 const Welcome = () => {
   const [isStarting, setIsStarting] = useState(false);
@@ -46,7 +45,7 @@ const Welcome = () => {
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
                 <img 
-                  src={lunaLinkLogo} 
+                  src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png" 
                   alt="LunaLink AI" 
                   className="h-12 w-auto"
                 />
