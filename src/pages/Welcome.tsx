@@ -10,7 +10,7 @@ const Welcome = () => {
   const handleGetStarted = () => {
     setIsStarting(true);
     setTimeout(() => {
-      window.location.href = "/dashboard";
+      window.location.href = "/auth";
     }, 300);
   };
 

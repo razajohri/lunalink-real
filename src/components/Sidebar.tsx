@@ -6,11 +6,34 @@ import {
   Clock, 
   BarChart, 
   DollarSign, 
-  Settings 
+  Settings,
+  LogOut
 } from "lucide-react";
 import lunaLinkLogo from "@/assets/lunalink-logo.jpg";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
+import { Button } from "@/components/ui/button";
 
 const Sidebar = () => {
+  const { signOut } = useAuth();
+  const { toast } = useToast();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      toast({
+        title: "Signed Out",
+        description: "You have been successfully signed out.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to sign out. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
   const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
     { name: "Voice Agents", href: "/voice-agents", icon: Phone },
@@ -59,7 +82,7 @@ const Sidebar = () => {
       </nav>
 
       {/* Status Indicator */}
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-border space-y-3">
         <div className="flex items-center space-x-2 px-3 py-2 bg-success/10 rounded-lg">
           <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
           <div className="text-xs">
@@ -67,6 +90,17 @@ const Sidebar = () => {
             <div className="text-success">Connected</div>
           </div>
         </div>
+        
+        {/* Sign Out Button */}
+        <Button
+          onClick={handleSignOut}
+          variant="ghost"
+          size="sm"
+          className="w-full justify-start text-muted-foreground hover:text-foreground hover:bg-muted"
+        >
+          <LogOut className="mr-2 h-4 w-4" />
+          Sign Out
+        </Button>
       </div>
     </div>
   );
