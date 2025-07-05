@@ -7,6 +7,10 @@ import { VapiProvider } from "@/contexts/VapiContext";
 import Welcome from "./pages/Welcome";
 import Dashboard from "./pages/Dashboard";
 import VoiceAgents from "./pages/VoiceAgents";
+import CallLogs from "./pages/CallLogs";
+import Analytics from "./pages/Analytics";
+import Billing from "./pages/Billing";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +26,10 @@ const App = () => (
             <Route path="/" element={<Welcome />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/voice-agents" element={<VoiceAgents />} />
+            <Route path="/call-logs" element={<CallLogs />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/billing" element={<Billing />} />
+            <Route path="/settings" element={<Settings />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
