@@ -18,7 +18,7 @@ const CallPerformanceChart = ({ data }: CallPerformanceChartProps) => {
         <div>
           <h3 className="text-lg font-semibold text-foreground">Call Performance</h3>
           <p className="text-sm text-muted-foreground">
-            Calls made and carts recovered over the last 7 days
+            Calls made and abandoned carts recovered over the last 7 days
           </p>
         </div>
         

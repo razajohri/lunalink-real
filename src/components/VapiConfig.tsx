@@ -56,10 +56,10 @@ const VapiConfig = () => {
         <div className="space-y-2">
           <div className="flex items-center space-x-2">
             <Key className="w-5 h-5 text-primary" />
-            <h3 className="text-lg font-semibold text-foreground">Vapi API Configuration</h3>
+            <h3 className="text-lg font-semibold text-foreground">AI Employee Configuration</h3>
           </div>
           <p className="text-sm text-muted-foreground">
-            Connect your Vapi account to start managing voice agents and viewing call analytics.
+            Subscribe to a plan to get your credentials and start calling abandoned checkouts.
           </p>
         </div>
 
@@ -81,9 +81,6 @@ const VapiConfig = () => {
               value={formData.apiKey}
               onChange={(e) => setFormData(prev => ({ ...prev, apiKey: e.target.value }))}
             />
-            <p className="text-xs text-muted-foreground">
-              Your private API key from the Vapi dashboard. This will be stored locally in your browser.
-            </p>
           </div>
 
           <div className="space-y-2">
@@ -123,8 +120,7 @@ const VapiConfig = () => {
               <span className="text-xs font-semibold text-primary">1</span>
             </div>
             <div>
-              <p className="font-medium text-foreground">Get your Vapi API credentials</p>
-              <p>Sign up at vapi.ai and copy your private API key from the dashboard.</p>
+              <p className="font-medium text-foreground">Select your pricing & sign up to a plan</p>
             </div>
           </div>
           
@@ -133,8 +129,8 @@ const VapiConfig = () => {
               <span className="text-xs font-semibold text-primary">2</span>
             </div>
             <div>
-              <p className="font-medium text-foreground">Create a voice assistant</p>
-              <p>Set up your first voice assistant in Vapi and note down the assistant ID.</p>
+              <p className="font-medium text-foreground">Get your custom voice agent</p>
+              <p>Our team will create an ecommerce custom voice agent for you and send you the credentials.</p>
             </div>
           </div>
           
@@ -143,7 +139,7 @@ const VapiConfig = () => {
               <span className="text-xs font-semibold text-primary">3</span>
             </div>
             <div>
-              <p className="font-medium text-foreground">Configure LunaLink AI</p>
+              <p className="font-medium text-foreground">Add credentials to access your dashboard</p>
               <p>Enter your credentials above to start managing your voice agents and viewing analytics.</p>
             </div>
           </div>

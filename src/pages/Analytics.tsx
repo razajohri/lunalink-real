@@ -244,6 +244,31 @@ const Analytics = () => {
           </div>
         </Card>
 
+        {/* Recovered Abandoned Checkouts */}
+        <Card className="p-6">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-foreground">Recovered Abandoned Checkouts</h3>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div className="text-center space-y-2">
+                <div className="text-2xl font-bold text-primary">156</div>
+                <p className="text-sm text-muted-foreground">Total Abandoned Carts</p>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-2xl font-bold text-success">89</div>
+                <p className="text-sm text-muted-foreground">Successfully Contacted</p>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-2xl font-bold text-success">34</div>
+                <p className="text-sm text-muted-foreground">Purchases Completed</p>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-2xl font-bold text-warning">$2,847</div>
+                <p className="text-sm text-muted-foreground">Revenue Recovered</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+
         {/* Performance Summary */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="p-6 text-center space-y-4">

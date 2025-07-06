@@ -149,6 +149,70 @@ const Dashboard = () => {
             <CallPerformanceChart data={stats.callsLast7Days} />
           )}
 
+          {/* Calling Abandoned Checkouts */}
+          <Card className="p-6">
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-foreground">Calling Abandoned Checkouts</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center space-y-2">
+                  <div className="text-2xl font-bold text-primary">47</div>
+                  <p className="text-sm text-muted-foreground">Abandoned Carts Called</p>
+                </div>
+                <div className="text-center space-y-2">
+                  <div className="text-2xl font-bold text-success">23</div>
+                  <p className="text-sm text-muted-foreground">Successfully Recovered</p>
+                </div>
+                <div className="text-center space-y-2">
+                  <div className="text-2xl font-bold text-warning">$1,247</div>
+                  <p className="text-sm text-muted-foreground">Revenue Recovered</p>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          {/* Cancelled Orders & Customer Issues */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <Card className="p-6">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-foreground">Cancelled Orders</h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-muted-foreground">This Week</span>
+                    <span className="font-medium">12 orders</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-muted-foreground">Recovery Attempts</span>
+                    <span className="font-medium">8 calls made</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-muted-foreground">Successful Saves</span>
+                    <span className="font-medium text-success">3 orders</span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-6">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-foreground">Customer Issues</h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-muted-foreground">Support Calls</span>
+                    <span className="font-medium">18 this week</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-muted-foreground">Avg Resolution Time</span>
+                    <span className="font-medium">2m 34s</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-muted-foreground">Satisfaction Rate</span>
+                    <span className="font-medium text-success">94%</span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+
           {/* Recent Calls */}
           <Card className="p-6">
             <div className="space-y-4">
