@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import VapiConfig from "@/components/VapiConfig";
 import Layout from "@/components/Layout";
 import { Settings as SettingsIcon, Bell, Clock, Store } from "lucide-react";
-import { useVapi } from "@/hooks/use-vapi";
+import { useVapi } from "@/contexts/VapiContext";
 
 const Settings = () => {
   const { toast } = useToast();

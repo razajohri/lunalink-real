@@ -12,7 +12,7 @@ import Layout from "@/components/Layout";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 const Dashboard = () => {
-  const { service, isConfigured } = useVapi();
+  const { service, isConfigured, credentials } = useVapi();
   const { toast } = useToast();
   const [stats, setStats] = useState<VapiStats | null>(null);
   const [recentCalls, setRecentCalls] = useState<VapiCall[]>([]);
@@ -24,8 +24,8 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const [statsData, callsData] = await Promise.all([
-        service.getStats(),
-        service.getCalls()
+        service.getStats(credentials?.assistantId),
+        service.getCalls(credentials?.assistantId)
       ]);
 
       setStats(statsData);
