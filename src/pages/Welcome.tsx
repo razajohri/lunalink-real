@@ -44,14 +44,14 @@ const Welcome = () => {
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
-                <img 
-                  src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png" 
-                  alt="LunaLink AI" 
+                <img
+                  src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png"
+                  alt="LunaLink AI"
                   className="h-12 w-auto"
                 />
                 <h1 className="text-3xl font-bold text-white">LunaLink AI</h1>
               </div>
-              
+
               <div className="space-y-4">
                 <h2 className="text-5xl font-bold text-white leading-tight">
                   Recover Abandoned Carts & Automate Customer Service
@@ -60,24 +60,24 @@ const Welcome = () => {
                   with AI Sales Rep
                 </h3>
               </div>
-              
+
               <p className="text-xl text-slate-300 leading-relaxed">
                 Boost your sales and improve customer satisfaction with powerful AI voice and messaging agents that work 24/7.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 shadow-glow animate-glow-pulse"
                 onClick={handleGetStarted}
                 disabled={isStarting}
               >
                 {isStarting ? "Starting..." : "Get Started"}
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
+              <Button
+                size="lg"
+                variant="outline"
                 className="text-lg px-8 py-6 border-white/20 text-white hover:bg-white/10"
               >
                 Watch Demo
@@ -95,7 +95,7 @@ const Welcome = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-success rounded-full"></div>
-                <span>Enterprise Ready</span>
+                <span>Built for Ecommerce</span>
               </div>
             </div>
           </div>
@@ -103,8 +103,8 @@ const Welcome = () => {
           {/* Right Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-fade-in">
             {features.map((feature, index) => (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="p-6 bg-gradient-glass backdrop-blur-md border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 shadow-card"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -127,8 +127,8 @@ const Welcome = () => {
         {/* Bottom Stats */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center animate-fade-in">
           <div className="space-y-2">
-            <div className="text-4xl font-bold text-white">500K+</div>
-            <div className="text-slate-300">Calls Processed</div>
+            <div className="text-4xl font-bold text-white">Increase Ecom Sales</div>
+            <div className="text-slate-300"></div>
           </div>
           <div className="space-y-2">
             <div className="text-4xl font-bold text-white">98.5%</div>
