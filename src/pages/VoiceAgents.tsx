@@ -175,9 +175,9 @@ const VoiceAgents = () => {
 
                   <div className="flex space-x-2 pt-2">
                     <Button
-                      variant="success"
+                      variant="secondary"
                       size="sm"
-                      className="flex-1 flex items-center justify-center"
+                      className="flex-1 flex items-center justify-center bg-success/10 text-success hover:bg-success/20"
                       disabled
                     >
                       <Check className="w-4 h-4 mr-2" />

@@ -69,7 +69,7 @@ const Dashboard = () => {
       <Layout>
         <div className="text-center space-y-6">
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-foreground">Configure Account Integration</>
+            <h1 className="text-3xl font-bold text-foreground">Configure Account Integration</h1>
             <p className="text-muted-foreground">
               Connect your AI assistant to start managing voice agents and access the dashboard.
             </p>

@@ -79,7 +79,7 @@ const Billing = () => {
     { date: "2023-12-15", description: "Monthly Subscription - Starter Plan", amount: 49.00, status: "paid" }
   ];
 
-  const usagePercentage = (usageData.minutesUsed / usageData.minutesIncluded) * 100;
+  const usagePercentage = (Number(usageData.minutesUsed) / Number(usageData.minutesIncluded)) * 100;
 
   return (
     <Layout>
