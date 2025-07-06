@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import { useVapi } from "@/contexts/VapiContext";
 
 const ProfileSetup = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,6 +18,7 @@ const ProfileSetup = () => {
   const { user, updateProfile, getProfile } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { service, isConfigured, credentials } = useVapi();
 
   useEffect(() => {
     if (!user) {
@@ -42,7 +44,7 @@ const ProfileSetup = () => {
 
     try {
       const { error } = await updateProfile(formData);
-      
+
       if (error) {
         toast({
           title: "Update Failed",
@@ -90,9 +92,9 @@ const ProfileSetup = () => {
             {/* Header */}
             <div className="text-center space-y-4">
               <div className="flex items-center justify-center space-x-3">
-                <img 
-                  src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png" 
-                  alt="LunaLink AI" 
+                <img
+                  src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png"
+                  alt="LunaLink AI"
                   className="h-10 w-auto"
                 />
                 <h1 className="text-2xl font-bold text-white">LunaLink AI</h1>
@@ -143,7 +145,7 @@ const ProfileSetup = () => {
                 >
                   {isLoading ? 'Updating Profile...' : 'Complete Profile'}
                 </Button>
-                
+
                 <Button
                   type="button"
                   variant="ghost"

@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Plus, Phone, MessageSquare, Play, Pause, Edit, Check } from "lucide-react";
 import Layout from "@/components/Layout";
+import { useVapi } from "@/contexts/VapiContext";
 
 interface Agent {
   id: string;
@@ -20,6 +21,7 @@ interface Agent {
 
 const VoiceAgents = () => {
   const [showContactSales, setShowContactSales] = useState(false);
+  const { service, isConfigured, credentials } = useVapi();
 
   const mockAgents: Agent[] = [
     {

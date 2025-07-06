@@ -10,17 +10,17 @@ import StatCard from "@/components/StatCard";
 import { Phone, BarChart as BarChartIcon, Clock, TrendingUp } from "lucide-react";
 
 const Analytics = () => {
-  const { service, isConfigured } = useVapi();
+  const { service, isConfigured, credentials } = useVapi();
   const [stats, setStats] = useState<VapiStats | null>(null);
   const [timeRange, setTimeRange] = useState("7d");
   const [loading, setLoading] = useState(false);
 
   const fetchAnalytics = async () => {
-    if (!service || !isConfigured) return;
+    if (!service || !isConfigured || !credentials?.assistantId) return;
 
     setLoading(true);
     try {
-      const statsData = await service.getStats();
+      const statsData = await service.getStats(credentials.assistantId);
       setStats(statsData);
     } catch (error) {
       console.error('Error fetching analytics:', error);

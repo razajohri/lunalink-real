@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import VapiConfig from "@/components/VapiConfig";
 import Layout from "@/components/Layout";
 import { Settings as SettingsIcon, Bell, Clock, Store } from "lucide-react";
+import { useVapi } from "@/hooks/use-vapi";
 
 const Settings = () => {
   const { toast } = useToast();
@@ -17,19 +18,21 @@ const Settings = () => {
     storeName: "My E-commerce Store",
     timeZone: "ET"
   });
-  
+
   const [notificationSettings, setNotificationSettings] = useState({
     emailNotifications: true,
     dailySummary: true,
     notificationEmail: "admin@mystore.com"
   });
-  
+
   const [callSettings, setCallSettings] = useState({
     retryFailedCalls: true,
     quietHoursStart: "22:00",
     quietHoursEnd: "08:00",
     maxCallsPerHour: 50
   });
+
+  const { service, isConfigured, credentials } = useVapi();
 
   const handleSaveGeneral = () => {
     // In real app, this would save to backend
@@ -41,7 +44,7 @@ const Settings = () => {
 
   const handleSaveNotifications = () => {
     toast({
-      title: "Settings Saved", 
+      title: "Settings Saved",
       description: "Notification settings have been updated successfully."
     });
   };
@@ -113,8 +116,8 @@ const Settings = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="timezone">Time Zone</Label>
-                  <Select 
-                    value={generalSettings.timeZone} 
+                  <Select
+                    value={generalSettings.timeZone}
                     onValueChange={(value) => setGeneralSettings(prev => ({ ...prev, timeZone: value }))}
                   >
                     <SelectTrigger>
@@ -157,7 +160,7 @@ const Settings = () => {
                   </div>
                   <Switch
                     checked={notificationSettings.emailNotifications}
-                    onCheckedChange={(checked) => 
+                    onCheckedChange={(checked) =>
                       setNotificationSettings(prev => ({ ...prev, emailNotifications: checked }))
                     }
                   />
@@ -172,7 +175,7 @@ const Settings = () => {
                   </div>
                   <Switch
                     checked={notificationSettings.dailySummary}
-                    onCheckedChange={(checked) => 
+                    onCheckedChange={(checked) =>
                       setNotificationSettings(prev => ({ ...prev, dailySummary: checked }))
                     }
                   />
@@ -184,7 +187,7 @@ const Settings = () => {
                     id="notification-email"
                     type="email"
                     value={notificationSettings.notificationEmail}
-                    onChange={(e) => 
+                    onChange={(e) =>
                       setNotificationSettings(prev => ({ ...prev, notificationEmail: e.target.value }))
                     }
                     placeholder="Enter notification email address"
@@ -218,7 +221,7 @@ const Settings = () => {
                   </div>
                   <Switch
                     checked={callSettings.retryFailedCalls}
-                    onCheckedChange={(checked) => 
+                    onCheckedChange={(checked) =>
                       setCallSettings(prev => ({ ...prev, retryFailedCalls: checked }))
                     }
                   />
@@ -231,7 +234,7 @@ const Settings = () => {
                       id="quiet-start"
                       type="time"
                       value={callSettings.quietHoursStart}
-                      onChange={(e) => 
+                      onChange={(e) =>
                         setCallSettings(prev => ({ ...prev, quietHoursStart: e.target.value }))
                       }
                     />
@@ -243,7 +246,7 @@ const Settings = () => {
                       id="quiet-end"
                       type="time"
                       value={callSettings.quietHoursEnd}
-                      onChange={(e) => 
+                      onChange={(e) =>
                         setCallSettings(prev => ({ ...prev, quietHoursEnd: e.target.value }))
                       }
                     />
@@ -256,7 +259,7 @@ const Settings = () => {
                     id="max-calls"
                     type="number"
                     value={callSettings.maxCallsPerHour}
-                    onChange={(e) => 
+                    onChange={(e) =>
                       setCallSettings(prev => ({ ...prev, maxCallsPerHour: parseInt(e.target.value) || 0 }))
                     }
                     placeholder="Maximum calls per hour"

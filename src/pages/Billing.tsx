@@ -5,9 +5,11 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Check, Star, Crown, Zap } from "lucide-react";
 import Layout from "@/components/Layout";
+import { useVapi } from "@/contexts/VapiContext";
 
 const Billing = () => {
   const [currentPlan, setCurrentPlan] = useState("starter");
+  const { service, isConfigured, credentials } = useVapi();
 
   const plans = [
     {

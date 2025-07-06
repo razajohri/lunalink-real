@@ -11,7 +11,7 @@ import { Search, Download, Eye, Filter } from "lucide-react";
 import Layout from "@/components/Layout";
 
 const CallLogs = () => {
-  const { service, isConfigured } = useVapi();
+  const { service, isConfigured, credentials } = useVapi();
   const [calls, setCalls] = useState<VapiCall[]>([]);
   const [filteredCalls, setFilteredCalls] = useState<VapiCall[]>([]);
   const [loading, setLoading] = useState(false);
@@ -20,11 +20,11 @@ const CallLogs = () => {
   const [selectedTranscript, setSelectedTranscript] = useState<string | null>(null);
 
   const fetchCalls = async () => {
-    if (!service || !isConfigured) return;
+    if (!service || !isConfigured || !credentials?.assistantId) return;
 
     setLoading(true);
     try {
-      const callsData = await service.getCalls();
+      const callsData = await service.getCalls(credentials.assistantId);
       setCalls(callsData);
       setFilteredCalls(callsData);
     } catch (error) {
@@ -40,7 +40,7 @@ const CallLogs = () => {
 
   useEffect(() => {
     fetchCalls();
-  }, [service, isConfigured]);
+  }, [service, isConfigured, credentials]);
 
   // Filter calls based on search and status
   useEffect(() => {

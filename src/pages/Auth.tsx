@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
+import { useVapi } from "@/contexts/VapiContext";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -23,6 +24,7 @@ const Auth = () => {
   const { signUp, signIn, resetPassword } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { service, isConfigured, credentials } = useVapi();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,7 +33,7 @@ const Auth = () => {
     try {
       if (showForgotPassword) {
         const { error } = await resetPassword(formData.email);
-        
+
         if (error) {
           toast({
             title: "Reset Failed",
@@ -47,7 +49,7 @@ const Auth = () => {
         }
       } else if (isLogin) {
         const { error } = await signIn(formData.email, formData.password);
-        
+
         if (error) {
           toast({
             title: "Login Failed",
@@ -63,7 +65,7 @@ const Auth = () => {
         }
       } else {
         const { error } = await signUp(formData.email, formData.password, formData.firstName, formData.lastName);
-        
+
         if (error) {
           toast({
             title: "Signup Failed",
@@ -104,27 +106,27 @@ const Auth = () => {
             {/* Header */}
             <div className="text-center space-y-4">
               <div className="flex items-center justify-center space-x-3">
-                <img 
-                  src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png" 
-                  alt="LunaLink AI" 
+                <img
+                  src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png"
+                  alt="LunaLink AI"
                   className="h-10 w-auto"
                 />
                 <h1 className="text-2xl font-bold text-white">LunaLink AI</h1>
               </div>
               <div className="space-y-2">
                 <h2 className="text-xl font-semibold text-white">
-                  {showForgotPassword 
-                    ? 'Reset Password' 
-                    : isLogin 
-                      ? 'Welcome Back' 
+                  {showForgotPassword
+                    ? 'Reset Password'
+                    : isLogin
+                      ? 'Welcome Back'
                       : 'Get Started'
                   }
                 </h2>
                 <p className="text-slate-300">
                   {showForgotPassword
                     ? 'Enter your email to receive password reset instructions'
-                    : isLogin 
-                      ? 'Sign in to your account to continue' 
+                    : isLogin
+                      ? 'Sign in to your account to continue'
                       : 'Create your account to start using AI voice agents'
                   }
                 </p>
@@ -214,16 +216,16 @@ const Auth = () => {
                 className="w-full bg-primary hover:bg-primary/90 shadow-glow"
                 disabled={isLoading}
               >
-                {isLoading 
-                  ? (showForgotPassword 
-                      ? 'Sending Reset Email...' 
-                      : isLogin 
-                        ? 'Signing In...' 
+                {isLoading
+                  ? (showForgotPassword
+                      ? 'Sending Reset Email...'
+                      : isLogin
+                        ? 'Signing In...'
                         : 'Creating Account...')
-                  : (showForgotPassword 
-                      ? 'Send Reset Email' 
-                      : isLogin 
-                        ? 'Sign In' 
+                  : (showForgotPassword
+                      ? 'Send Reset Email'
+                      : isLogin
+                        ? 'Sign In'
                         : 'Create Account')
                 }
               </Button>
@@ -241,7 +243,7 @@ const Auth = () => {
                   Forgot your password?
                 </Button>
               )}
-              
+
               {!showForgotPassword && (
                 <Button
                   type="button"
@@ -249,13 +251,13 @@ const Auth = () => {
                   onClick={() => setIsLogin(!isLogin)}
                   className="text-slate-300 hover:text-white hover:bg-white/10"
                 >
-                  {isLogin 
-                    ? "Don't have an account? Sign up" 
+                  {isLogin
+                    ? "Don't have an account? Sign up"
                     : "Already have an account? Sign in"
                   }
                 </Button>
               )}
-              
+
               {showForgotPassword && (
                 <Button
                   type="button"
