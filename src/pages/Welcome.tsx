@@ -69,7 +69,7 @@ const Welcome = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 shadow-glow animate-glow-pulse"
+                className="text-lg px-8 py-6 bg-primary hover:bg-primary/90"
                 onClick={handleGetStarted}
                 disabled={isStarting}
               >
@@ -77,7 +77,7 @@ const Welcome = () => {
               </Button>
               <Button
                 size="lg"
-                className="text-lg px-8 py-6 bg-black text-white"
+                className="text-lg px-8 py-6 bg-primary hover:bg-primary/90"
               >
                 Watch Demo
               </Button>
@@ -94,7 +94,7 @@ const Welcome = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-success rounded-full"></div>
-                <span className="text-xs">Built for Ecommerce</span>
+                <span>Built for Ecommerce</span>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@ const Welcome = () => {
         {/* Bottom Stats */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center animate-fade-in">
           <div className="space-y-2">
-            <div className="text-4xl font-bold text-white">Increase Ecom Sales</div>
+            <div className="text-2xl font-bold text-white">Increase Ecom Sales</div>
             <div className="text-slate-300"></div>
           </div>
           <div className="space-y-2">

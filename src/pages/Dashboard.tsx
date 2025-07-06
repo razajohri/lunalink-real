@@ -20,17 +20,17 @@ const Dashboard = () => {
 
   const fetchData = async () => {
     if (!service || !isConfigured) return;
-    
+
     setLoading(true);
     try {
       const [statsData, callsData] = await Promise.all([
         service.getStats(),
         service.getCalls()
       ]);
-      
+
       setStats(statsData);
       setRecentCalls(callsData.slice(0, 5)); // Show latest 5 calls
-      
+
       toast({
         title: "Data refreshed",
         description: "Dashboard data has been updated successfully.",
@@ -42,7 +42,7 @@ const Dashboard = () => {
         description: "Using demo data for preview.",
         variant: "destructive"
       });
-      
+
       // Load mock data on error
       const mockStats = service?.getMockStats?.() || {
         totalCalls: 333,
@@ -52,7 +52,7 @@ const Dashboard = () => {
         callsLast7Days: []
       };
       const mockCalls = service?.getMockCalls?.() || [];
-      
+
       setStats(mockStats);
       setRecentCalls(mockCalls.slice(0, 5));
     } finally {
@@ -70,13 +70,14 @@ const Dashboard = () => {
         <div className="text-center space-y-6">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold text-foreground">Configure Vapi Integration</h1>
+            <h1 className="text-3xl font-bold text-foreground">Configure Account Integration</h1>
             <p className="text-muted-foreground">
-              Connect your Vapi account to start managing voice agents and viewing call analytics.
+              Connect your AI assistant to start managing voice agents and access the dashboard.
             </p>
           </div>
           <Card className="p-8 max-w-md mx-auto">
             <p className="text-sm text-muted-foreground mb-4">
-              Go to Settings to configure your Vapi API credentials and assistant ID.
+              Go to settings to subscribe to a plan and get your credentials.
             </p>
             <Button asChild>
               <a href="/settings">Configure Now</a>
@@ -99,8 +100,8 @@ const Dashboard = () => {
                 Overview of your AI voice assistant performance and call analytics.
               </p>
             </div>
-            <Button 
-              onClick={fetchData} 
+            <Button
+              onClick={fetchData}
               disabled={loading}
               className="space-x-2"
             >
@@ -153,11 +154,11 @@ const Dashboard = () => {
           <Card className="p-6">
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-foreground">Recent Calls</h3>
-              
+
               <div className="space-y-3">
                 {recentCalls.map((call) => (
-                  <div 
-                    key={call.id} 
+                  <div
+                    key={call.id}
                     className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors"
                   >
                     <div className="flex items-center space-x-4">
@@ -170,15 +171,15 @@ const Dashboard = () => {
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center space-x-4">
-                      <Badge 
-                        variant={call.status === 'completed' ? 'default' : 
+                      <Badge
+                        variant={call.status === 'completed' ? 'default' :
                                 call.status === 'failed' ? 'destructive' : 'secondary'}
                       >
                         {call.status}
                       </Badge>
-                      
+
                       <div className="text-right space-y-1">
                         <p className="text-sm font-medium">
                           {call.duration ? service?.formatDuration(call.duration) : 'N/A'}
@@ -187,7 +188,7 @@ const Dashboard = () => {
                           {call.cost ? service?.formatCurrency(call.cost) : 'N/A'}
                         </p>
                       </div>
-                      
+
                       <Button variant="outline" size="sm">
                         View
                       </Button>
@@ -195,7 +196,7 @@ const Dashboard = () => {
                   </div>
                 ))}
               </div>
-              
+
               <div className="pt-4 border-t border-border">
                 <Button variant="outline" className="w-full">
                   View All Call Logs
