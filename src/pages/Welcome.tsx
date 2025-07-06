@@ -77,8 +77,7 @@ const Welcome = () => {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 border-white/20 text-white hover:bg-white/10"
+                className="text-lg px-8 py-6 bg-black text-white"
               >
                 Watch Demo
               </Button>
@@ -95,7 +94,7 @@ const Welcome = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-success rounded-full"></div>
-                <span>Built for Ecommerce</span>
+                <span className="text-xs">Built for Ecommerce</span>
               </div>
             </div>
           </div>
