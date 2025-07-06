@@ -12,6 +12,7 @@ const Auth = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -19,7 +20,7 @@ const Auth = () => {
     lastName: '',
   });
 
-  const { signUp, signIn } = useAuth();
+  const { signUp, signIn, resetPassword } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -28,7 +29,23 @@ const Auth = () => {
     setIsLoading(true);
 
     try {
-      if (isLogin) {
+      if (showForgotPassword) {
+        const { error } = await resetPassword(formData.email);
+        
+        if (error) {
+          toast({
+            title: "Reset Failed",
+            description: error.message,
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Reset Email Sent!",
+            description: "Check your email for password reset instructions.",
+          });
+          setShowForgotPassword(false);
+        }
+      } else if (isLogin) {
         const { error } = await signIn(formData.email, formData.password);
         
         if (error) {
@@ -96,12 +113,19 @@ const Auth = () => {
               </div>
               <div className="space-y-2">
                 <h2 className="text-xl font-semibold text-white">
-                  {isLogin ? 'Welcome Back' : 'Get Started'}
+                  {showForgotPassword 
+                    ? 'Reset Password' 
+                    : isLogin 
+                      ? 'Welcome Back' 
+                      : 'Get Started'
+                  }
                 </h2>
                 <p className="text-slate-300">
-                  {isLogin 
-                    ? 'Sign in to your account to continue' 
-                    : 'Create your account to start using AI voice agents'
+                  {showForgotPassword
+                    ? 'Enter your email to receive password reset instructions'
+                    : isLogin 
+                      ? 'Sign in to your account to continue' 
+                      : 'Create your account to start using AI voice agents'
                   }
                 </p>
               </div>
@@ -109,7 +133,7 @@ const Auth = () => {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
-              {!isLogin && (
+              {!isLogin && !showForgotPassword && (
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName" className="text-slate-200">First Name</Label>
@@ -154,34 +178,36 @@ const Auth = () => {
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="password" className="text-slate-200">Password</Label>
-                <div className="relative">
-                  <Input
-                    id="password"
-                    name="password"
-                    type={showPassword ? "text" : "password"}
-                    placeholder="••••••••"
-                    value={formData.password}
-                    onChange={handleInputChange}
-                    required
-                    className="bg-white/10 border-white/20 text-white placeholder:text-slate-400 pr-10"
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4 text-slate-400" />
-                    ) : (
-                      <Eye className="h-4 w-4 text-slate-400" />
-                    )}
-                  </Button>
+              {!showForgotPassword && (
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-slate-200">Password</Label>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="••••••••"
+                      value={formData.password}
+                      onChange={handleInputChange}
+                      required
+                      className="bg-white/10 border-white/20 text-white placeholder:text-slate-400 pr-10"
+                    />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4 text-slate-400" />
+                      ) : (
+                        <Eye className="h-4 w-4 text-slate-400" />
+                      )}
+                    </Button>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <Button
                 type="submit"
@@ -189,25 +215,60 @@ const Auth = () => {
                 disabled={isLoading}
               >
                 {isLoading 
-                  ? (isLogin ? 'Signing In...' : 'Creating Account...') 
-                  : (isLogin ? 'Sign In' : 'Create Account')
+                  ? (showForgotPassword 
+                      ? 'Sending Reset Email...' 
+                      : isLogin 
+                        ? 'Signing In...' 
+                        : 'Creating Account...')
+                  : (showForgotPassword 
+                      ? 'Send Reset Email' 
+                      : isLogin 
+                        ? 'Sign In' 
+                        : 'Create Account')
                 }
               </Button>
             </form>
 
-            {/* Toggle */}
-            <div className="text-center">
-              <Button
-                type="button"
-                variant="ghost"
-                onClick={() => setIsLogin(!isLogin)}
-                className="text-slate-300 hover:text-white hover:bg-white/10"
-              >
-                {isLogin 
-                  ? "Don't have an account? Sign up" 
-                  : "Already have an account? Sign in"
-                }
-              </Button>
+            {/* Navigation */}
+            <div className="text-center space-y-2">
+              {isLogin && !showForgotPassword && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => setShowForgotPassword(true)}
+                  className="text-slate-300 hover:text-white hover:bg-white/10 text-sm"
+                >
+                  Forgot your password?
+                </Button>
+              )}
+              
+              {!showForgotPassword && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => setIsLogin(!isLogin)}
+                  className="text-slate-300 hover:text-white hover:bg-white/10"
+                >
+                  {isLogin 
+                    ? "Don't have an account? Sign up" 
+                    : "Already have an account? Sign in"
+                  }
+                </Button>
+              )}
+              
+              {showForgotPassword && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => {
+                    setShowForgotPassword(false);
+                    setIsLogin(true);
+                  }}
+                  className="text-slate-300 hover:text-white hover:bg-white/10"
+                >
+                  Back to Sign In
+                </Button>
+              )}
             </div>
           </div>
         </Card>
