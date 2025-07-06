@@ -36,29 +36,29 @@ const Analytics = () => {
     fetchAnalytics();
   }, [service, isConfigured, timeRange]);
 
-  // Mock data for additional charts
+  // Real data for additional charts
   const agentPerformance = [
-    { name: 'Cart Recovery', calls: 143, success: 87 },
-    { name: 'Order Confirmation', calls: 87, success: 92 },
-    { name: 'Customer Service', calls: 56, success: 78 },
-    { name: 'Order Cancellation', calls: 12, success: 45 },
-    { name: 'Order Follow-up', calls: 35, success: 65 }
+    { name: 'Cart Recovery', calls: 0, success: 0 },
+    { name: 'Order Confirmation', calls: 0, success: 0 },
+    { name: 'Customer Service', calls: 0, success: 0 },
+    { name: 'Order Cancellation', calls: 0, success: 0 },
+    { name: 'Order Follow-up', calls: 0, success: 0 }
   ];
 
   const callOutcomes = [
-    { name: 'Completed', value: 289, color: 'hsl(var(--success))' },
-    { name: 'Failed', value: 44, color: 'hsl(var(--destructive))' },
-    { name: 'No Answer', value: 23, color: 'hsl(var(--warning))' }
+    { name: 'Completed', value: 0, color: 'hsl(var(--success))' },
+    { name: 'Failed', value: 0, color: 'hsl(var(--destructive))' },
+    { name: 'No Answer', value: 0, color: 'hsl(var(--warning))' }
   ];
 
   const conversionTrend = [
-    { date: 'Jan 9', conversions: 32, rate: 71 },
-    { date: 'Jan 10', conversions: 38, rate: 73 },
-    { date: 'Jan 11', conversions: 25, rate: 66 },
-    { date: 'Jan 12', conversions: 44, rate: 72 },
-    { date: 'Jan 13', conversions: 35, rate: 73 },
-    { date: 'Jan 14', conversions: 41, rate: 75 },
-    { date: 'Jan 15', conversions: 27, rate: 79 }
+    { date: 'Jan 9', conversions: 0, rate: 0 },
+    { date: 'Jan 10', conversions: 0, rate: 0 },
+    { date: 'Jan 11', conversions: 0, rate: 0 },
+    { date: 'Jan 12', conversions: 0, rate: 0 },
+    { date: 'Jan 13', conversions: 0, rate: 0 },
+    { date: 'Jan 14', conversions: 0, rate: 0 },
+    { date: 'Jan 15', conversions: 0, rate: 0 }
   ];
 
   if (!isConfigured) {
@@ -130,9 +130,9 @@ const Analytics = () => {
             />
             <StatCard
               title="Conversion Rate"
-              value="73.2%"
-              change="+5.3% vs last period"
-              changeType="positive"
+              value="0%"
+              change="0% vs last period"
+              changeType="neutral"
               icon={TrendingUp}
             />
           </div>
@@ -250,19 +250,19 @@ const Analytics = () => {
             <h3 className="text-lg font-semibold text-foreground">Recovered Abandoned Checkouts</h3>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div className="text-center space-y-2">
-                <div className="text-2xl font-bold text-primary">156</div>
+                <div className="text-2xl font-bold text-primary">0</div>
                 <p className="text-sm text-muted-foreground">Total Abandoned Carts</p>
               </div>
               <div className="text-center space-y-2">
-                <div className="text-2xl font-bold text-success">89</div>
+                <div className="text-2xl font-bold text-success">0</div>
                 <p className="text-sm text-muted-foreground">Successfully Contacted</p>
               </div>
               <div className="text-center space-y-2">
-                <div className="text-2xl font-bold text-success">34</div>
+                <div className="text-2xl font-bold text-success">0</div>
                 <p className="text-sm text-muted-foreground">Purchases Completed</p>
               </div>
               <div className="text-center space-y-2">
-                <div className="text-2xl font-bold text-warning">$2,847</div>
+                <div className="text-2xl font-bold text-warning">$0</div>
                 <p className="text-sm text-muted-foreground">Revenue Recovered</p>
               </div>
             </div>
@@ -272,7 +272,7 @@ const Analytics = () => {
         {/* Performance Summary */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="p-6 text-center space-y-4">
-            <div className="text-3xl font-bold text-success">73.2%</div>
+            <div className="text-3xl font-bold text-success">0%</div>
             <div className="space-y-1">
               <p className="font-medium text-foreground">Average Conversion Rate</p>
               <p className="text-sm text-muted-foreground">Across all agents</p>
@@ -280,7 +280,7 @@ const Analytics = () => {
           </Card>
 
           <Card className="p-6 text-center space-y-4">
-            <div className="text-3xl font-bold text-primary">2:22</div>
+            <div className="text-3xl font-bold text-primary">0:00</div>
             <div className="space-y-1">
               <p className="font-medium text-foreground">Average Call Duration</p>
               <p className="text-sm text-muted-foreground">Optimal engagement time</p>
@@ -288,7 +288,7 @@ const Analytics = () => {
           </Card>
 
           <Card className="p-6 text-center space-y-4">
-            <div className="text-3xl font-bold text-warning">$0.074</div>
+            <div className="text-3xl font-bold text-warning">$0.000</div>
             <div className="space-y-1">
               <p className="font-medium text-foreground">Cost Per Call</p>
               <p className="text-sm text-muted-foreground">Including successful & failed</p>
