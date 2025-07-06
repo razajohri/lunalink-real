@@ -103,7 +103,7 @@ export class VapiService {
       const dateStr = date.toISOString().split('T')[0];
       
       const daysCalls = calls.filter(call => 
-        call.startedAt.startsWith(dateStr)
+        call.startedAt && call.startedAt.startsWith(dateStr)
       ).length;
       
       last7Days.push({
