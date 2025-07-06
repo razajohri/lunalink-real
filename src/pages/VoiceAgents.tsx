@@ -4,9 +4,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Plus, Phone, MessageSquare, Play, Pause, Edit } from "lucide-react";
+import { Plus, Phone, MessageSquare, Play, Pause, Edit, Check } from "lucide-react";
 import Layout from "@/components/Layout";
-import CreateAgentModal from "@/components/CreateAgentModal";
 
 interface Agent {
   id: string;
@@ -20,8 +19,8 @@ interface Agent {
 }
 
 const VoiceAgents = () => {
-  const [showCreateModal, setShowCreateModal] = useState(false);
-  
+  const [showContactSales, setShowContactSales] = useState(false);
+
   const mockAgents: Agent[] = [
     {
       id: '1',
@@ -106,8 +105,8 @@ const VoiceAgents = () => {
               Manage your AI voice agents and SMS messaging campaigns.
             </p>
           </div>
-          <Button 
-            onClick={() => setShowCreateModal(true)}
+          <Button
+            onClick={() => setShowContactSales(true)}
             className="space-x-2"
           >
             <Plus className="w-4 h-4" />
@@ -129,6 +128,9 @@ const VoiceAgents = () => {
           </TabsList>
 
           <TabsContent value="voice-agents" className="space-y-6">
+            <div className="text-center text-muted-foreground font-medium mb-2">
+              No need for setup for Done for You users.
+            </div>
             {/* Agents Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {mockAgents.map((agent) => (
@@ -136,7 +138,7 @@ const VoiceAgents = () => {
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
                       <h3 className="font-semibold text-foreground">{agent.name}</h3>
-                      <Badge 
+                      <Badge
                         variant={agent.status === 'active' ? 'default' : 'secondary'}
                         className={agent.status === 'active' ? 'bg-success hover:bg-success/80' : ''}
                       >
@@ -173,31 +175,13 @@ const VoiceAgents = () => {
 
                   <div className="flex space-x-2 pt-2">
                     <Button
-                      variant="outline"
+                      variant="success"
                       size="sm"
-                      onClick={() => testCall(agent.id)}
-                      className="flex-1"
+                      className="flex-1 flex items-center justify-center"
+                      disabled
                     >
-                      <Play className="w-4 h-4 mr-2" />
-                      Test Call
-                    </Button>
-                    <Button
-                      variant={agent.status === 'active' ? 'destructive' : 'default'}
-                      size="sm"
-                      onClick={() => toggleAgentStatus(agent.id)}
-                      className="flex-1"
-                    >
-                      {agent.status === 'active' ? (
-                        <>
-                          <Pause className="w-4 h-4 mr-2" />
-                          Deactivate
-                        </>
-                      ) : (
-                        <>
-                          <Play className="w-4 h-4 mr-2" />
-                          Activate
-                        </>
-                      )}
+                      <Check className="w-4 h-4 mr-2" />
+                      Done for you
                     </Button>
                   </div>
                 </Card>
@@ -209,10 +193,11 @@ const VoiceAgents = () => {
             <Card className="p-8 text-center space-y-4">
               <MessageSquare className="w-16 h-16 text-muted-foreground mx-auto" />
               <div className="space-y-2">
-                <h3 className="text-xl font-semibold text-foreground">SMS Messaging Coming Soon</h3>
+                <h3 className="text-xl font-semibold text-foreground">SMS Messaging <span className="text-primary">Coming Soon</span></h3>
                 <p className="text-muted-foreground max-w-md mx-auto">
                   Integrate with Twilio to send automated SMS messages for cart recovery and customer engagement.
                 </p>
+                <div className="text-sm text-muted-foreground font-medium mt-2">Coming Soon</div>
               </div>
               <Button variant="outline" disabled>
                 Configure Twilio Integration
@@ -222,10 +207,17 @@ const VoiceAgents = () => {
         </Tabs>
 
         {/* Create Agent Modal */}
-        <CreateAgentModal 
-          open={showCreateModal} 
-          onOpenChange={setShowCreateModal}
-        />
+        <Dialog open={showContactSales} onOpenChange={setShowContactSales}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Contact Sales</DialogTitle>
+            </DialogHeader>
+            <div className="py-4 text-center">
+              <p className="text-lg">Please contact our sales team to create a custom AI voice agent for your business.</p>
+              <a href="mailto:sales@yourdomain.com" className="mt-4 inline-block bg-primary text-white px-6 py-2 rounded">Email Sales</a>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </Layout>
   );

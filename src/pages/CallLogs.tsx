@@ -21,7 +21,7 @@ const CallLogs = () => {
 
   const fetchCalls = async () => {
     if (!service || !isConfigured) return;
-    
+
     setLoading(true);
     try {
       const callsData = await service.getCalls();
@@ -47,7 +47,7 @@ const CallLogs = () => {
     let filtered = calls;
 
     if (searchTerm) {
-      filtered = filtered.filter(call => 
+      filtered = filtered.filter(call =>
         call.customer?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         call.customer?.number?.includes(searchTerm)
       );
@@ -85,7 +85,7 @@ const CallLogs = () => {
           </div>
           <Card className="p-8 max-w-md mx-auto">
             <Button asChild>
-              <a href="/settings">Configure Vapi</a>
+              <a href="/settings">Configure Now</a>
             </Button>
           </Card>
         </div>
@@ -161,8 +161,8 @@ const CallLogs = () => {
             ) : (
               <div className="space-y-3">
                 {filteredCalls.map((call) => (
-                  <div 
-                    key={call.id} 
+                  <div
+                    key={call.id}
                     className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors"
                   >
                     <div className="flex items-center space-x-4">
@@ -180,7 +180,7 @@ const CallLogs = () => {
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center space-x-6">
                       <div className="text-right space-y-1">
                         <p className="text-sm font-medium">
@@ -190,13 +190,13 @@ const CallLogs = () => {
                           {call.cost ? service?.formatCurrency(call.cost) : 'N/A'}
                         </p>
                       </div>
-                      
+
                       <div className="text-right space-y-1">
                         <p className="text-sm font-medium text-muted-foreground">
                           Agent: {call.assistantId}
                         </p>
                       </div>
-                      
+
                       {call.transcript && (
                         <Dialog>
                           <DialogTrigger asChild>
@@ -234,8 +234,8 @@ const CallLogs = () => {
                 {filteredCalls.length === 0 && !loading && (
                   <div className="text-center py-8">
                     <p className="text-muted-foreground">
-                      {searchTerm || statusFilter !== "all" 
-                        ? "No calls match your filters." 
+                      {searchTerm || statusFilter !== "all"
+                        ? "No calls match your filters."
                         : "No call logs available yet."}
                     </p>
                   </div>

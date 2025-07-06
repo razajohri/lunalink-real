@@ -8,7 +8,7 @@ import Layout from "@/components/Layout";
 
 const Billing = () => {
   const [currentPlan, setCurrentPlan] = useState("starter");
-  
+
   const plans = [
     {
       id: "starter",
@@ -66,11 +66,11 @@ const Billing = () => {
   ];
 
   const usageData = {
-    minutesUsed: 347,
-    minutesIncluded: 500,
-    costThisMonth: 18.73,
-    callsThisMonth: 89,
-    billingCycle: "Jan 15 - Feb 15"
+    minutesUsed: 'U/K',
+    minutesIncluded: 'U/K',
+    costThisMonth: 'U/K',
+    callsThisMonth: 'U/K',
+    billingCycle: 'U/K'
   };
 
   const recentTransactions = [
@@ -99,7 +99,7 @@ const Billing = () => {
               <h3 className="text-lg font-semibold text-foreground">Current Usage</h3>
               <Badge variant="secondary">{usageData.billingCycle}</Badge>
             </div>
-            
+
             <div className="space-y-4">
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
@@ -113,7 +113,7 @@ const Billing = () => {
                   {Math.round(100 - usagePercentage)}% remaining this cycle
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                 <div className="text-center">
                   <p className="text-2xl font-bold text-primary">${usageData.costThisMonth}</p>
@@ -137,12 +137,12 @@ const Billing = () => {
                 </div>
                 <Badge className="bg-success hover:bg-success/80">Active</Badge>
               </div>
-              
+
               <div className="space-y-2">
                 <p className="text-sm font-medium text-foreground">Next billing: Feb 15, 2024</p>
                 <p className="text-sm text-muted-foreground">Your plan automatically renews</p>
               </div>
-              
+
               <div className="flex space-x-2 pt-2">
                 <Button variant="outline" size="sm" className="flex-1">
                   Change Plan
@@ -162,8 +162,8 @@ const Billing = () => {
             {plans.map((plan) => {
               const Icon = plan.icon;
               return (
-                <Card 
-                  key={plan.id} 
+                <Card
+                  key={plan.id}
                   className={`p-6 space-y-6 relative transition-all duration-300 hover:shadow-elegant ${
                     plan.popular ? 'ring-2 ring-primary shadow-glow' : ''
                   } ${currentPlan === plan.id ? 'ring-2 ring-success' : ''}`}
@@ -173,17 +173,17 @@ const Billing = () => {
                       Most Popular
                     </Badge>
                   )}
-                  
+
                   <div className="text-center space-y-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
                       <Icon className="w-6 h-6 text-primary" />
                     </div>
-                    
+
                     <div>
                       <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
                       <p className="text-sm text-muted-foreground">{plan.description}</p>
                     </div>
-                    
+
                     <div className="space-y-1">
                       <div className="text-4xl font-bold text-foreground">
                         ${plan.price}
@@ -191,7 +191,7 @@ const Billing = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <ul className="space-y-3">
                     {plan.features.map((feature, index) => (
                       <li key={index} className="flex items-center space-x-3">
@@ -200,8 +200,8 @@ const Billing = () => {
                       </li>
                     ))}
                   </ul>
-                  
-                  <Button 
+
+                  <Button
                     className={`w-full ${currentPlan === plan.id ? 'bg-success hover:bg-success/90' : ''}`}
                     variant={currentPlan === plan.id ? 'default' : plan.popular ? 'default' : 'outline'}
                   >
@@ -220,7 +220,7 @@ const Billing = () => {
               <h3 className="text-lg font-semibold text-foreground">Recent Transactions</h3>
               <Button variant="outline" size="sm">Download Invoice</Button>
             </div>
-            
+
             <div className="space-y-3">
               {recentTransactions.map((transaction, index) => (
                 <div key={index} className="flex items-center justify-between p-4 border border-border rounded-lg">
@@ -245,7 +245,7 @@ const Billing = () => {
           <div className="space-y-2">
             <h3 className="text-lg font-semibold text-foreground">Usage Alert</h3>
             <p className="text-sm text-muted-foreground">
-              You've used {Math.round(usagePercentage)}% of your monthly minutes. 
+              You've used {Math.round(usagePercentage)}% of your monthly minutes.
               {usagePercentage > 80 && " Consider upgrading to avoid overage charges."}
             </p>
             {usagePercentage > 80 && (

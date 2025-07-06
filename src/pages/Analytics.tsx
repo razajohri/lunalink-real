@@ -17,7 +17,7 @@ const Analytics = () => {
 
   const fetchAnalytics = async () => {
     if (!service || !isConfigured) return;
-    
+
     setLoading(true);
     try {
       const statsData = await service.getStats();
@@ -73,7 +73,7 @@ const Analytics = () => {
           </div>
           <Card className="p-8 max-w-md mx-auto">
             <Button asChild>
-              <a href="/settings">Configure Vapi</a>
+              <a href="/settings">Configure Now</a>
             </Button>
           </Card>
         </div>
@@ -147,15 +147,15 @@ const Analytics = () => {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={agentPerformance}>
                     <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                    <XAxis 
-                      dataKey="name" 
+                    <XAxis
+                      dataKey="name"
                       tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
                       angle={-45}
                       textAnchor="end"
                       height={80}
                     />
                     <YAxis tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
-                    <Tooltip 
+                    <Tooltip
                       contentStyle={{
                         backgroundColor: 'hsl(var(--card))',
                         border: '1px solid hsl(var(--border))',
@@ -189,7 +189,7 @@ const Analytics = () => {
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
-                    <Tooltip 
+                    <Tooltip
                       contentStyle={{
                         backgroundColor: 'hsl(var(--card))',
                         border: '1px solid hsl(var(--border))',
@@ -219,22 +219,22 @@ const Analytics = () => {
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={conversionTrend}>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis 
-                    dataKey="date" 
+                  <XAxis
+                    dataKey="date"
                     tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
                   />
                   <YAxis tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
-                  <Tooltip 
+                  <Tooltip
                     contentStyle={{
                       backgroundColor: 'hsl(var(--card))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px'
                     }}
                   />
-                  <Line 
-                    type="monotone" 
-                    dataKey="rate" 
-                    stroke="hsl(var(--primary))" 
+                  <Line
+                    type="monotone"
+                    dataKey="rate"
+                    stroke="hsl(var(--primary))"
                     strokeWidth={3}
                     dot={{ fill: 'hsl(var(--primary))', strokeWidth: 2, r: 6 }}
                   />
@@ -253,7 +253,7 @@ const Analytics = () => {
               <p className="text-sm text-muted-foreground">Across all agents</p>
             </div>
           </Card>
-          
+
           <Card className="p-6 text-center space-y-4">
             <div className="text-3xl font-bold text-primary">2:22</div>
             <div className="space-y-1">
@@ -261,7 +261,7 @@ const Analytics = () => {
               <p className="text-sm text-muted-foreground">Optimal engagement time</p>
             </div>
           </Card>
-          
+
           <Card className="p-6 text-center space-y-4">
             <div className="text-3xl font-bold text-warning">$0.074</div>
             <div className="space-y-1">

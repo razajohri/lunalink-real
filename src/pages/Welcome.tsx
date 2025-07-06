@@ -126,7 +126,7 @@ const Welcome = () => {
         {/* Bottom Stats */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center animate-fade-in">
           <div className="space-y-2">
-            <div className="text-2xl font-bold text-white">Increase Ecom Sales</div>
+            <div className="text-2xl font-bold text-white">Increase Ecom Sales with personalized AI</div>
             <div className="text-slate-300"></div>
           </div>
           <div className="space-y-2">
