@@ -73,9 +73,9 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const cleanDomain = storeDomain.replace(/^https?:\/\//, '').replace(/\/$/, '');
     const shop = cleanDomain.includes('.myshopify.com') ? cleanDomain : `${cleanDomain}.myshopify.com`;
 
-    const clientId = '29305a981aad2c207d5fb319cc3baab9';
+    const clientId = '7bc2e2570fce7edadba44659613915e9';
     const scope = 'read_checkouts,read_customers';
-    const redirectUri = 'https://drnhhpaazbiujxdradtz.supabase.co/functions/v1/shopify-callback';
+    const redirectUri = 'https://lunalink-real.lovable.app/shopify/callback';
     const state = user.id;
 
     const oauthUrl = `https://${shop}/admin/oauth/authorize?client_id=${clientId}&scope=${scope}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${state}`;
