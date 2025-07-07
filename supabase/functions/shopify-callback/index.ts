@@ -46,8 +46,8 @@ serve(async (req) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        client_id: '29305a981aad2c207d5fb319cc3baab9',
-        client_secret: '8444b1b6573c45307de3f51a0e4afdda',
+        client_id: Deno.env.get('SHOPIFY_API_KEY'),
+        client_secret: Deno.env.get('SHOPIFY_API_SECRET'),
         code: code,
       }),
     })
