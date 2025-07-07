@@ -30,7 +30,6 @@ const ShopifyCallback = () => {
         title: 'Shopify Connected!',
         description: 'Your Shopify store has been successfully connected.',
       });
-      // Refresh connection status after a short delay to ensure the edge function completes
       setTimeout(() => {
         console.log('Refreshing connection...');
         refreshConnection();
@@ -64,22 +63,46 @@ const ShopifyCallback = () => {
         description: errorMessage,
         variant: 'destructive',
       });
-    } else if (code && shop && state) {
-      console.log('OAuth callback detected, should be handled by edge function');
-      // This should be handled by the edge function automatically
-      // If we reach here, it means the edge function isn't working
-      toast({
-        title: 'Processing Connection',
-        description: 'Processing your Shopify connection...',
-      });
+    } else if (code && shop && state && user) {
+      console.log('OAuth callback detected, processing in frontend');
+      // Handle OAuth in frontend since edge function redirect isn't whitelisted yet
+      handleOAuthCallback(code, shop, state);
     }
 
-    // Always redirect to dashboard after handling the callback
+    // Redirect to dashboard after a delay
     setTimeout(() => {
       console.log('Redirecting to dashboard...');
       navigate('/dashboard', { replace: true });
     }, 1500);
   }, [searchParams, navigate, toast, refreshConnection, user]);
+
+  const handleOAuthCallback = async (code: string, shop: string, state: string) => {
+    try {
+      // Call our edge function directly
+      const response = await fetch(`https://drnhhpaazbiujxdradtz.supabase.co/functions/v1/shopify-callback?code=${code}&shop=${shop}&state=${state}`, {
+        method: 'GET',
+      });
+      
+      if (response.ok) {
+        toast({
+          title: 'Shopify Connected!',
+          description: 'Your Shopify store has been successfully connected.',
+        });
+        setTimeout(() => {
+          refreshConnection();
+        }, 1000);
+      } else {
+        throw new Error('Failed to process callback');
+      }
+    } catch (error) {
+      console.error('Error processing OAuth callback:', error);
+      toast({
+        title: 'Connection Failed',
+        description: 'Failed to complete Shopify connection. Please try again.',
+        variant: 'destructive',
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center">
