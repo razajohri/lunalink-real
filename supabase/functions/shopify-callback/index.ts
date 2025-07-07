@@ -7,16 +7,23 @@ const corsHeaders = {
 }
 
 serve(async (req) => {
+  console.log('Shopify callback function called:', req.method, req.url)
+  
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
 
   try {
     const url = new URL(req.url)
+    console.log('Full URL:', url.href)
+    console.log('Search params:', url.searchParams.toString())
+    
     const code = url.searchParams.get('code')
     const shop = url.searchParams.get('shop')
     const state = url.searchParams.get('state') // This is the user_id
     const error = url.searchParams.get('error')
+
+    console.log('Extracted params:', { code: code?.substring(0, 10) + '...', shop, state, error })
 
     if (error) {
       console.error('Shopify OAuth error:', error)
@@ -77,9 +84,15 @@ serve(async (req) => {
     }
 
     // Initialize Supabase client
+    console.log('Initializing Supabase client...')
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')
+    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
+    console.log('Supabase URL exists:', !!supabaseUrl)
+    console.log('Supabase Key exists:', !!supabaseKey)
+    
     const supabase = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+      supabaseUrl ?? '',
+      supabaseKey ?? ''
     )
 
     // Save the store connection to Supabase

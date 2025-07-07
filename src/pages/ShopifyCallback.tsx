@@ -2,27 +2,41 @@ import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 import { useShopify } from '@/contexts/ShopifyContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 const ShopifyCallback = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { toast } = useToast();
   const { refreshConnection } = useShopify();
+  const { user } = useAuth();
 
   useEffect(() => {
+    console.log('ShopifyCallback page loaded');
+    console.log('Current user:', user?.id);
+    console.log('URL search params:', searchParams.toString());
+    
     const success = searchParams.get('success');
     const error = searchParams.get('error');
+    const code = searchParams.get('code');
+    const shop = searchParams.get('shop');
+    const state = searchParams.get('state');
+
+    console.log('Callback params:', { success, error, code: code?.substring(0, 10) + '...', shop, state });
 
     if (success === 'shopify_connected') {
+      console.log('Success callback detected');
       toast({
         title: 'Shopify Connected!',
         description: 'Your Shopify store has been successfully connected.',
       });
       // Refresh connection status after a short delay to ensure the edge function completes
       setTimeout(() => {
+        console.log('Refreshing connection...');
         refreshConnection();
       }, 1000);
     } else if (error) {
+      console.log('Error callback detected:', error);
       let errorMessage = 'Failed to connect to Shopify. Please try again.';
       
       switch (error) {
@@ -50,13 +64,22 @@ const ShopifyCallback = () => {
         description: errorMessage,
         variant: 'destructive',
       });
+    } else if (code && shop && state) {
+      console.log('OAuth callback detected, should be handled by edge function');
+      // This should be handled by the edge function automatically
+      // If we reach here, it means the edge function isn't working
+      toast({
+        title: 'Processing Connection',
+        description: 'Processing your Shopify connection...',
+      });
     }
 
     // Always redirect to dashboard after handling the callback
     setTimeout(() => {
+      console.log('Redirecting to dashboard...');
       navigate('/dashboard', { replace: true });
     }, 1500);
-  }, [searchParams, navigate, toast, refreshConnection]);
+  }, [searchParams, navigate, toast, refreshConnection, user]);
 
   return (
     <div className="min-h-screen flex items-center justify-center">

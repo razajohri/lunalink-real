@@ -34,18 +34,23 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [loading, setLoading] = useState(true);
 
   const fetchShopifyStore = async () => {
+    console.log('fetchShopifyStore called, user:', user?.id);
     if (!user) {
+      console.log('No user found, setting store to null');
       setStore(null);
       setLoading(false);
       return;
     }
 
     try {
+      console.log('Fetching Shopify store for user:', user.id);
       const { data, error } = await supabase
         .from('shopify_stores')
         .select('*')
         .eq('user_id', user.id)
         .maybeSingle();
+
+      console.log('Shopify store query result:', { data, error });
 
       if (error) {
         console.error('Error fetching Shopify store:', error);
@@ -53,6 +58,7 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
       }
 
       setStore(data);
+      console.log('Store set to:', data);
     } catch (error) {
       console.error('Error fetching Shopify store:', error);
     } finally {
@@ -69,7 +75,7 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     const clientId = '29305a981aad2c207d5fb319cc3baab9';
     const scope = 'read_checkouts,read_customers';
-    const redirectUri = 'https://lunalink-real.lovable.app/shopify/callback';
+    const redirectUri = 'https://drnhhpaazbiujxdradtz.supabase.co/functions/v1/shopify-callback';
     const state = user.id;
 
     const oauthUrl = `https://${shop}/admin/oauth/authorize?client_id=${clientId}&scope=${scope}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${state}`;
