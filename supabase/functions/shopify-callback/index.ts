@@ -83,6 +83,7 @@ serve(async (req) => {
     )
 
     // Save the store connection to Supabase
+    console.log('Attempting to save store connection for user:', state)
     const { error: dbError } = await supabase
       .from('shopify_stores')
       .upsert({
@@ -104,6 +105,8 @@ serve(async (req) => {
         }
       })
     }
+
+    console.log('Successfully saved store connection for user:', state)
 
     // Redirect to dashboard on success
     return new Response(null, {

@@ -18,7 +18,10 @@ const ShopifyCallback = () => {
         title: 'Shopify Connected!',
         description: 'Your Shopify store has been successfully connected.',
       });
-      refreshConnection();
+      // Refresh connection status after a short delay to ensure the edge function completes
+      setTimeout(() => {
+        refreshConnection();
+      }, 1000);
     } else if (error) {
       let errorMessage = 'Failed to connect to Shopify. Please try again.';
       
@@ -50,7 +53,9 @@ const ShopifyCallback = () => {
     }
 
     // Always redirect to dashboard after handling the callback
-    navigate('/dashboard', { replace: true });
+    setTimeout(() => {
+      navigate('/dashboard', { replace: true });
+    }, 1500);
   }, [searchParams, navigate, toast, refreshConnection]);
 
   return (
