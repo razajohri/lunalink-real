@@ -12,6 +12,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
+import ShopifyConnectionStatus from "@/components/ShopifyConnectionStatus";
 
 const Sidebar = () => {
   const { signOut } = useAuth();
@@ -80,15 +81,9 @@ const Sidebar = () => {
         ))}
       </nav>
 
-      {/* Status Indicator */}
+      {/* Shopify Connection Status */}
       <div className="p-4 border-t border-border space-y-3">
-        <div className="flex items-center space-x-2 px-3 py-2 bg-success/10 rounded-lg">
-          <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-          <div className="text-xs">
-            <div className="font-medium text-foreground">Vapi Assistant</div>
-            <div className="text-success">Connected</div>
-          </div>
-        </div>
+        <ShopifyConnectionStatus />
         
         {/* Sign Out Button */}
         <Button

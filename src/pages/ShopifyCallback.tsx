@@ -1,0 +1,66 @@
+import { useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
+import { useShopify } from '@/contexts/ShopifyContext';
+
+const ShopifyCallback = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const { toast } = useToast();
+  const { refreshConnection } = useShopify();
+
+  useEffect(() => {
+    const success = searchParams.get('success');
+    const error = searchParams.get('error');
+
+    if (success === 'shopify_connected') {
+      toast({
+        title: 'Shopify Connected!',
+        description: 'Your Shopify store has been successfully connected.',
+      });
+      refreshConnection();
+    } else if (error) {
+      let errorMessage = 'Failed to connect to Shopify. Please try again.';
+      
+      switch (error) {
+        case 'oauth_failed':
+          errorMessage = 'OAuth authorization failed. Please try again.';
+          break;
+        case 'missing_params':
+          errorMessage = 'Missing required parameters. Please try again.';
+          break;
+        case 'token_exchange_failed':
+          errorMessage = 'Failed to exchange authorization code. Please try again.';
+          break;
+        case 'no_access_token':
+          errorMessage = 'No access token received from Shopify.';
+          break;
+        case 'db_save_failed':
+          errorMessage = 'Failed to save connection details. Please try again.';
+          break;
+        default:
+          errorMessage = 'An unexpected error occurred. Please try again.';
+      }
+
+      toast({
+        title: 'Connection Failed',
+        description: errorMessage,
+        variant: 'destructive',
+      });
+    }
+
+    // Always redirect to dashboard after handling the callback
+    navigate('/dashboard', { replace: true });
+  }, [searchParams, navigate, toast, refreshConnection]);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold mb-4">Processing Shopify Connection...</h2>
+        <p className="text-muted-foreground">Please wait while we complete your store connection.</p>
+      </div>
+    </div>
+  );
+};
+
+export default ShopifyCallback;
