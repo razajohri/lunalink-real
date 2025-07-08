@@ -11,7 +11,7 @@ import { useVapi } from "@/contexts/VapiContext";
 interface Agent {
   id: string;
   name: string;
-  status: 'active' | 'inactive';
+  status: 'active' | 'inactive' | 'coming-soon';
   voice: string;
   trigger: string;
   phoneNumber: string;
@@ -37,7 +37,7 @@ const VoiceAgents = () => {
     {
       id: '2',
       name: 'Order Follow-up',
-      status: 'inactive',
+      status: 'coming-soon',
       voice: 'Friendly Male',
       trigger: 'Post-Purchase (24 hours)',
       phoneNumber: '+1 (555) 123-4568',
@@ -47,7 +47,7 @@ const VoiceAgents = () => {
     {
       id: '3',
       name: 'Order Cancellation',
-      status: 'active',
+      status: 'coming-soon',
       voice: 'Empathetic Female',
       trigger: 'Cancellation Request',
       phoneNumber: '+1 (555) 123-4569',
@@ -57,7 +57,7 @@ const VoiceAgents = () => {
     {
       id: '4',
       name: 'Order Confirmation',
-      status: 'active',
+      status: 'coming-soon',
       voice: 'Professional Female',
       trigger: 'New Order (Immediate)',
       phoneNumber: '+1 (555) 123-4570',
@@ -67,7 +67,7 @@ const VoiceAgents = () => {
     {
       id: '5',
       name: 'Product Recommendation',
-      status: 'inactive',
+      status: 'coming-soon',
       voice: 'Enthusiastic Male',
       trigger: 'Browse Abandonment',
       phoneNumber: '+1 (555) 123-4571',
@@ -142,9 +142,9 @@ const VoiceAgents = () => {
                       <h3 className="font-semibold text-foreground">{agent.name}</h3>
                       <Badge
                         variant={agent.status === 'active' ? 'default' : 'secondary'}
-                        className={agent.status === 'active' ? 'bg-success hover:bg-success/80' : ''}
+                        className={agent.status === 'active' ? 'bg-success hover:bg-success/80' : agent.status === 'coming-soon' ? 'bg-warning/10 text-warning' : ''}
                       >
-                        {agent.status}
+                        {agent.status === 'coming-soon' ? 'Coming Soon' : agent.status}
                       </Badge>
                     </div>
                     <Button variant="ghost" size="sm">
