@@ -72,7 +72,7 @@ const Settings = () => {
           <TabsList className="grid w-full max-w-2xl grid-cols-4">
             <TabsTrigger value="vapi" className="space-x-2">
               <SettingsIcon className="w-4 h-4" />
-              <span>Vapi</span>
+              <span>API</span>
             </TabsTrigger>
             <TabsTrigger value="general" className="space-x-2">
               <Store className="w-4 h-4" />
@@ -88,7 +88,7 @@ const Settings = () => {
             </TabsTrigger>
           </TabsList>
 
-          {/* Vapi Configuration */}
+          {/* API Configuration */}
           <TabsContent value="vapi">
             <VapiConfig />
           </TabsContent>

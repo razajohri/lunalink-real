@@ -80,7 +80,7 @@ const CallLogs = () => {
           <div className="space-y-2">
             <h1 className="text-3xl font-bold text-foreground">Call Logs</h1>
             <p className="text-muted-foreground">
-              Configure your Vapi integration to view call logs.
+              Configure your integration to view call logs.
             </p>
           </div>
           <Card className="p-8 max-w-md mx-auto">
