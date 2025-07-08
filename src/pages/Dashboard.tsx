@@ -4,9 +4,11 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useVapi } from "@/contexts/VapiContext";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 import StatCard from "@/components/StatCard";
 import CallPerformanceChart from "@/components/CallPerformanceChart";
-import { Phone, BarChart, DollarSign, Clock, RefreshCw } from "lucide-react";
+import { Phone, BarChart, DollarSign, Clock, RefreshCw, Crown, Star, Zap, Settings } from "lucide-react";
 import { VapiStats, VapiCall } from "@/services/VapiService";
 import Layout from "@/components/Layout";
 import ProtectedRoute from "@/components/ProtectedRoute";
@@ -14,9 +16,21 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 const Dashboard = () => {
   const { service, isConfigured, credentials } = useVapi();
   const { toast } = useToast();
+  const { user } = useAuth();
   const [stats, setStats] = useState<VapiStats | null>(null);
   const [recentCalls, setRecentCalls] = useState<VapiCall[]>([]);
   const [loading, setLoading] = useState(false);
+  const [subscriptionData, setSubscriptionData] = useState<{
+    subscribed: boolean;
+    subscription_tier: string | null;
+    calls_limit: number;
+    calls_used: number;
+  }>({
+    subscribed: false,
+    subscription_tier: null,
+    calls_limit: 0,
+    calls_used: 0
+  });
 
   const fetchData = async () => {
     if (!service || !isConfigured) return;
@@ -60,9 +74,94 @@ const Dashboard = () => {
     }
   };
 
+  const checkSubscription = async () => {
+    if (!user) return;
+
+    try {
+      const { data, error } = await supabase.functions.invoke('check-subscription');
+      if (error) throw error;
+
+      if (data) {
+        setSubscriptionData({
+          subscribed: data.subscribed || false,
+          subscription_tier: data.subscription_tier,
+          calls_limit: data.calls_limit || 0,
+          calls_used: data.calls_used || 0
+        });
+      }
+    } catch (error) {
+      console.error('Error checking subscription:', error);
+    }
+  };
+
+  const handleManageSubscription = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('customer-portal');
+      if (error) throw error;
+
+      if (data?.url) {
+        window.open(data.url, '_blank');
+      }
+    } catch (error) {
+      console.error('Error opening customer portal:', error);
+      toast({
+        title: "Error",
+        description: "Failed to open subscription management portal.",
+        variant: "destructive"
+      });
+    }
+  };
+
   useEffect(() => {
     fetchData();
-  }, [service, isConfigured]);
+    if (user) {
+      checkSubscription();
+    }
+  }, [service, isConfigured, user]);
+
+  // Handle success redirect from Stripe
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+    const plan = urlParams.get('plan');
+
+    if (success === 'true' && plan) {
+      toast({
+        title: "Payment Successful! 🎉",
+        description: `You are now subscribed to the ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan.`,
+      });
+      
+      // Remove URL parameters
+      window.history.replaceState({}, document.title, window.location.pathname);
+      
+      // Refresh subscription data
+      setTimeout(() => {
+        checkSubscription();
+      }, 2000);
+    }
+  }, []);
+
+  const getPlanIcon = (tier: string | null) => {
+    switch (tier) {
+      case 'basic': return Zap;
+      case 'growth': return Star;
+      case 'pro': return Crown;
+      default: return Phone;
+    }
+  };
+
+  const getPlanColor = (tier: string | null) => {
+    switch (tier) {
+      case 'basic': return 'bg-blue-500';
+      case 'growth': return 'bg-primary';
+      case 'pro': return 'bg-purple-500';
+      default: return 'bg-gray-500';
+    }
+  };
+
+  const callsUsagePercentage = subscriptionData.calls_limit > 0 
+    ? (subscriptionData.calls_used / subscriptionData.calls_limit) * 100 
+    : 0;
 
   if (!isConfigured) {
     return (
@@ -91,23 +190,91 @@ const Dashboard = () => {
     <ProtectedRoute>
       <Layout>
         <div className="space-y-6">
-          {/* Header */}
+          {/* Header with Subscription Status */}
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
               <p className="text-muted-foreground">
-                Overview of your AI voice assistant performance, call analytics, and abandoned checkouts.
+                Overview of your AI voice assistant performance, call analytics, and subscription.
               </p>
             </div>
-            <Button
-              onClick={fetchData}
-              disabled={loading}
-              className="space-x-2"
-            >
-              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-              <span>Refresh Data</span>
-            </Button>
+            <div className="flex items-center space-x-4">
+              {/* Subscription Status */}
+              {subscriptionData.subscribed && subscriptionData.subscription_tier && (
+                <Card className="px-4 py-2">
+                  <div className="flex items-center space-x-2">
+                    {(() => {
+                      const PlanIcon = getPlanIcon(subscriptionData.subscription_tier);
+                      return <PlanIcon className="w-5 h-5 text-primary" />;
+                    })()}
+                    <div className="text-sm">
+                      <p className="font-semibold capitalize">{subscriptionData.subscription_tier} Plan</p>
+                      <p className="text-muted-foreground">
+                        {subscriptionData.calls_used}/{subscriptionData.calls_limit} calls
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              )}
+              
+              <Button
+                onClick={fetchData}
+                disabled={loading}
+                className="space-x-2"
+              >
+                <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+                <span>Refresh Data</span>
+              </Button>
+            </div>
           </div>
+
+          {/* Subscription Management */}
+          {subscriptionData.subscribed ? (
+            <Card className="p-6">
+              <div className="flex items-center justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-semibold text-foreground">Subscription Status</h3>
+                  <div className="flex items-center space-x-4">
+                    <Badge variant="default" className="capitalize">
+                      {subscriptionData.subscription_tier} Plan Active
+                    </Badge>
+                    <span className="text-sm text-muted-foreground">
+                      {subscriptionData.calls_used} of {subscriptionData.calls_limit} calls used this month
+                    </span>
+                  </div>
+                  <div className="w-full bg-muted rounded-full h-2">
+                    <div 
+                      className={`h-2 rounded-full transition-all duration-300 ${getPlanColor(subscriptionData.subscription_tier)}`}
+                      style={{ width: `${Math.min(callsUsagePercentage, 100)}%` }}
+                    />
+                  </div>
+                </div>
+                <div className="flex space-x-2">
+                  <Button variant="outline" onClick={handleManageSubscription}>
+                    <Settings className="w-4 h-4 mr-2" />
+                    Manage Subscription
+                  </Button>
+                  <Button asChild>
+                    <a href="/billing">Upgrade Plan</a>
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          ) : (
+            <Card className="p-6 bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
+              <div className="flex items-center justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-semibold text-foreground">Get Started with LunaLink AI</h3>
+                  <p className="text-muted-foreground">
+                    Choose a plan to start using AI voice agents for your Shopify store.
+                  </p>
+                </div>
+                <Button asChild>
+                  <a href="/billing">View Pricing Plans</a>
+                </Button>
+              </div>
+            </Card>
+          )}
 
           {/* Stats Cards */}
           {stats && (
