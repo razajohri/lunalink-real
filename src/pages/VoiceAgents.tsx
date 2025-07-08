@@ -165,10 +165,6 @@ const VoiceAgents = () => {
                       <span className="text-muted-foreground">Phone:</span>
                       <span className="font-medium">{agent.phoneNumber}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Calls:</span>
-                      <span className="font-bold text-primary">{agent.callCount}</span>
-                    </div>
                   </div>
 
                   <p className="text-sm text-muted-foreground leading-relaxed">
