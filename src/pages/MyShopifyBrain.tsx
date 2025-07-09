@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { Sparkles, MessageCircle, BarChart2, Zap, Lock } from "lucide-react";
+import { Sparkles, MessageCircle, BarChart2, Zap, Lock, Share2 } from "lucide-react";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const quickStats = [
   { label: "Today's Sales", value: "$1,250", icon: BarChart2 },
@@ -18,6 +19,7 @@ const suggestedActions = [
   "Send Abandoned Cart Reminder",
   "Get Inventory Report",
   "Generate Sales Report",
+  "Generate a report of yesterday's sales",
 ];
 
 const exampleMessages = [
@@ -36,11 +38,20 @@ const exampleMessages = [
   {
     role: "assistant",
     content: "Order #1001 has been cancelled."
+  },
+  {
+    role: "user",
+    content: "Generate a report of yesterday's sales."
+  },
+  {
+    role: "assistant",
+    content: "Here's your sales report for yesterday: 12 orders, $980 in revenue."
   }
 ];
 
 const MyShopifyBrain = () => {
   const [input, setInput] = useState("");
+  const [showBetaDialog, setShowBetaDialog] = useState(false);
 
   return (
     <ProtectedRoute>
@@ -59,6 +70,14 @@ const MyShopifyBrain = () => {
                 Meet My Shopify Brain. Chat with your Shopify store, get live stats, and automate actions—all in one place.
               </p>
             </div>
+
+            {/* Social Media Automation Section */}
+            <Card className="p-4 flex items-center gap-4 bg-gradient-to-br from-primary/5 to-primary/10">
+              <Share2 className="w-6 h-6 text-primary" />
+              <div className="text-sm text-foreground">
+                <span className="font-semibold">Social Media Automation:</span> Create and upload content on all socials at once. Automate social media content creation and scheduling for your store.
+              </div>
+            </Card>
 
             {/* Quick Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -85,9 +104,20 @@ const MyShopifyBrain = () => {
 
             {/* Waitlist CTA */}
             <div className="pt-2">
-              <Button variant="default" className="w-full md:w-auto bg-gradient-to-r from-primary to-blue-500 text-white font-semibold">
-                Join Beta Waitlist
-              </Button>
+              <Dialog open={showBetaDialog} onOpenChange={setShowBetaDialog}>
+                <DialogTrigger asChild>
+                  <Button variant="default" className="w-full md:w-auto bg-gradient-to-r from-primary to-blue-500 text-white font-semibold" onClick={() => setShowBetaDialog(true)}>
+                    Join Beta Waitlist
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md text-center">
+                  <DialogHeader>
+                    <DialogTitle>Beta Access</DialogTitle>
+                  </DialogHeader>
+                  <p className="text-base text-foreground mb-4">Contact <a href="mailto:customer.lunalinkai@gmail.com" className="text-primary underline">customer.lunalinkai@gmail.com</a> for beta access.</p>
+                  <Button variant="outline" onClick={() => setShowBetaDialog(false)} className="w-full">Close</Button>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
 

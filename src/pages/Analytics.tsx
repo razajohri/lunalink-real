@@ -68,7 +68,7 @@ const Analytics = () => {
           <div className="space-y-2">
             <h1 className="text-3xl font-bold text-foreground">Analytics</h1>
             <p className="text-muted-foreground">
-              Configure your Vapi integration to view detailed analytics.
+              Configure your Lunalink integration to view detailed analytics.
             </p>
           </div>
           <Card className="p-8 max-w-md mx-auto">
