@@ -37,7 +37,7 @@ const VapiConfig = () => {
 
       toast({
         title: "Configuration Saved",
-        description: "Your Vapi credentials have been saved successfully.",
+        description: "Your Assistant credentials have been saved successfully.",
       });
     } catch (error) {
       toast({
