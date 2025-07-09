@@ -27,10 +27,10 @@ const VoiceAgents = () => {
     {
       id: '1',
       name: 'Cart Recovery Agent (🔥Trending) ',
-      status: 'active',
+      status: 'active now',
       voice: 'Professional Female',
-      trigger: 'Abandoned Cart (2 hours)',
-      phoneNumber: 'US/UK/EU/AU/CA/NZ +5',
+      trigger: 'Cart Recovery (2 hours)',
+      phoneNumber: 'US/UK/EU +15',
       callCount: 143,
       description: 'Reach out to customers who abandoned their shopping cart with a personalized call offering them a discount triggering them to complete their purchase.'
     },
@@ -40,7 +40,7 @@ const VoiceAgents = () => {
       status: 'coming-soon',
       voice: 'Friendly Male',
       trigger: 'Post-Purchase (24 hours)',
-      phoneNumber: 'US/UK/EU/AU/CA/NZ +5',
+      phoneNumber: 'US/UK/EU +15',
       callCount: 0,
       description: 'Follows up with customers after purchase to ensure satisfaction and gather feedback.'
     },
@@ -50,7 +50,7 @@ const VoiceAgents = () => {
       status: 'coming-soon',
       voice: 'Empathetic Female',
       trigger: 'Cancellation Request',
-      phoneNumber: 'US/UK/EU/AU/CA/NZ +5',
+      phoneNumber: 'US/UK/EU +15',
       callCount: 12,
       description: 'Handles customer cancellation requests with empathy and attempts to retain customers.'
     },
@@ -60,7 +60,7 @@ const VoiceAgents = () => {
       status: 'coming-soon',
       voice: 'Professional Female',
       trigger: 'New Order (Immediate)',
-      phoneNumber: 'US/UK/EU/AU/CA/NZ +5',
+      phoneNumber: 'US/UK/EU +15',
       callCount: 87,
       description: 'Confirms order details with customers immediately after purchase.'
     },
@@ -70,17 +70,17 @@ const VoiceAgents = () => {
       status: 'coming-soon',
       voice: 'Enthusiastic Male',
       trigger: 'Browse Abandonment',
-      phoneNumber: 'US/UK/EU/AU/CA/NZ +5',
+      phoneNumber: 'US/UK/EU +15',
       callCount: 35,
       description: 'Suggests related products to customers who browsed but did not purchase.'
     },
     {
       id: '6',
       name: 'Customer Service',
-      status: 'active',
+      status: 'active now',
       voice: 'Helpful Female',
       trigger: 'Support Request',
-      phoneNumber: 'US/UK/EU/AU/CA/NZ +5',
+      phoneNumber: 'US/UK/EU/ +15',
       callCount: 56,
       description: 'Handles general customer service inquiries and support requests.'
     }
