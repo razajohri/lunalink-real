@@ -130,10 +130,10 @@ const Dashboard = () => {
         title: "Payment Successful! 🎉",
         description: `You are now subscribed to the ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan.`,
       });
-      
+
       // Remove URL parameters
       window.history.replaceState({}, document.title, window.location.pathname);
-      
+
       // Refresh subscription data
       setTimeout(() => {
         checkSubscription();
@@ -159,27 +159,35 @@ const Dashboard = () => {
     }
   };
 
-  const callsUsagePercentage = subscriptionData.calls_limit > 0 
-    ? (subscriptionData.calls_used / subscriptionData.calls_limit) * 100 
+  const callsUsagePercentage = subscriptionData.calls_limit > 0
+    ? (subscriptionData.calls_used / subscriptionData.calls_limit) * 100
     : 0;
 
   if (!isConfigured) {
     return (
       <Layout>
         <div className="text-center space-y-6">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-foreground">Configure Account Integration</h1>
-            <p className="text-muted-foreground">
-              Connect your AI assistant to start managing voice agents and access the dashboard.
+          <div className="space-y-4">
+            <h1 className="text-4xl font-bold text-foreground">🚀 Unlock Your AI Assistant</h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Instantly connect your voice agents and get full dashboard access to start saving hours per day — or your competitors will.
             </p>
           </div>
-          <Card className="p-8 max-w-md mx-auto">
-            <p className="text-sm text-muted-foreground mb-4">
-              Go to settings to subscribe to a plan and get your credentials.
-            </p>
-            <Button asChild>
-              <a href="/settings">Configure Now</a>
-            </Button>
+          <Card className="p-8 max-w-lg mx-auto">
+            <div className="space-y-4">
+              <div className="flex items-center justify-center space-x-2 text-amber-600">
+                <span className="text-2xl">⚠️</span>
+                <p className="font-semibold">Plans Are Required to Activate Your Assistant</p>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Go to Settings now to choose your plan and grab your access credentials before your setup stalls.
+              </p>
+              <Button asChild className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600">
+                <a href="/settings">
+                  🔥 Get Started Instantly → Configure Now
+                </a>
+              </Button>
+            </div>
           </Card>
         </div>
       </Layout>
@@ -216,7 +224,7 @@ const Dashboard = () => {
                   </div>
                 </Card>
               )}
-              
+
               <Button
                 onClick={fetchData}
                 disabled={loading}
@@ -243,7 +251,7 @@ const Dashboard = () => {
                     </span>
                   </div>
                   <div className="w-full bg-muted rounded-full h-2">
-                    <div 
+                    <div
                       className={`h-2 rounded-full transition-all duration-300 ${getPlanColor(subscriptionData.subscription_tier)}`}
                       style={{ width: `${Math.min(callsUsagePercentage, 100)}%` }}
                     />
