@@ -14,6 +14,7 @@ import Settings from "./pages/Settings";
 import ShopifyCallback from "./pages/ShopifyCallback";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import NotFound from "./pages/NotFound";
+import MyShopifyBrain from "./pages/MyShopifyBrain";
 
 const App = () => (
   <TooltipProvider>
@@ -29,6 +30,7 @@ const App = () => (
       <Route path="/settings" element={<Settings />} />
       <Route path="/payment-success" element={<PaymentSuccess />} />
       <Route path="/shopify/callback" element={<ShopifyCallback />} />
+      <Route path="/my-shopify-brain" element={<MyShopifyBrain />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>
