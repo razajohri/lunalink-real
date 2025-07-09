@@ -26,13 +26,13 @@ const VoiceAgents = () => {
   const mockAgents: Agent[] = [
     {
       id: '1',
-      name: 'Cart Recovery Agent',
+      name: 'Cart Recovery Agent (🔥Trending) ',
       status: 'active',
       voice: 'Professional Female',
       trigger: 'Abandoned Cart (2 hours)',
       phoneNumber: '+1 (555) 123-4567',
       callCount: 143,
-      description: 'Reaches out to customers who abandoned their shopping cart to help complete their purchase.'
+      description: 'Reach out to customers who abandoned their shopping cart with a personalized call and offer them a discount triggering them to complete their purchase.'
     },
     {
       id: '2',

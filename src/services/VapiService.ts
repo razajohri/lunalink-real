@@ -77,8 +77,8 @@ export class VapiService {
     const totalCalls = calls.length;
     const successRate = totalCalls > 0 ? (completedCalls.length / totalCalls) * 100 : 0;
     const totalCost = calls.reduce((sum, call) => sum + (call.cost || 0), 0);
-    const averageDuration = completedCalls.length > 0 
-      ? completedCalls.reduce((sum, call) => sum + (call.duration || 0), 0) / completedCalls.length 
+    const averageDuration = completedCalls.length > 0
+      ? completedCalls.reduce((sum, call) => sum + (call.duration || 0), 0) / completedCalls.length
       : 0;
 
     // Generate last 7 days data
@@ -96,23 +96,23 @@ export class VapiService {
   private generateLast7DaysData(calls: VapiCall[]) {
     const last7Days = [];
     const now = new Date();
-    
+
     for (let i = 6; i >= 0; i--) {
       const date = new Date(now);
       date.setDate(date.getDate() - i);
       const dateStr = date.toISOString().split('T')[0];
-      
-      const daysCalls = calls.filter(call => 
+
+      const daysCalls = calls.filter(call =>
         call.startedAt && call.startedAt.startsWith(dateStr)
       ).length;
-      
+
       last7Days.push({
         date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
         calls: daysCalls,
         recovered: Math.floor(daysCalls * 0.7) // Assume 70% recovery rate
       });
     }
-    
+
     return last7Days;
   }
 
