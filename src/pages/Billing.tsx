@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Check, Star, Crown, Zap, ArrowRight } from "lucide-react";
+import { Check, Star, Crown, Zap, CheckCircle } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useVapi } from "@/contexts/VapiContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -156,6 +156,23 @@ const Billing = () => {
             Activate AI voice. Recover carts. Boost sales. Right now.
           </p>
         </div>
+
+        {/* Current Subscription Status */}
+        {currentPlan && (
+          <Card className="p-4 max-w-xl mx-auto bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20">
+            <div className="text-center space-y-2">
+              <div className="flex items-center justify-center space-x-2">
+                <CheckCircle className="w-5 h-5 text-success" />
+                <h3 className="text-lg font-semibold text-foreground">
+                  You currently have the {currentPlan.charAt(0).toUpperCase() + currentPlan.slice(1)} package
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Your subscription is active and ready to use
+              </p>
+            </div>
+          </Card>
+        )}
 
         {/* Current Usage - Show only if user has a plan */}
         {currentPlan && (
