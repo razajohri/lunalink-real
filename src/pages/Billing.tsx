@@ -242,13 +242,13 @@ const Billing = () => {
         </div>
 
         {/* Custom Solution CTA */}
-        <Card className="p-8 text-center bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20 max-w-4xl mx-auto">
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-foreground">Need a Custom Solution?</h3>
-            <p className="text-muted-foreground text-lg">
+        <Card className="p-4 text-center bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20 max-w-4xl mx-auto">
+          <div className="space-y-2">
+            <h3 className="text-lg font-bold text-foreground">Need a Custom Solution?</h3>
+            <p className="text-muted-foreground text-base">
               Contact us for tailored AI tools designed specifically for your Shopify store's unique needs.
             </p>
-            <Button variant="outline" size="lg" className="mt-4">
+            <Button variant="outline" size="sm" className="mt-2">
               Contact Sales Team
             </Button>
           </div>

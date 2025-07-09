@@ -64,11 +64,11 @@ const Analytics = () => {
   if (!isConfigured) {
     return (
       <Layout>
-        <div className="text-center space-y-6">
+        <div className="text-center space-y-6 mt-24">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold text-foreground">Analytics</h1>
             <p className="text-muted-foreground">
-              Configure your integration to view detailed analytics.
+              Configure your Vapi integration to view detailed analytics.
             </p>
           </div>
           <Card className="p-8 max-w-md mx-auto">
