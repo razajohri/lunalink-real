@@ -182,7 +182,7 @@ const Dashboard = () => {
                 Go to Settings now to choose your plan and grab your access credentials before your setup stalls.
               </p>
               <Button asChild className="w-full bg-primary text-white hover:bg-primary/90">
-                <a href="/settings">
+                <a href="/billing">
                   Get Started Instantly → Configure Now
                 </a>
               </Button>
