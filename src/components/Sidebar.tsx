@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { 
-  LayoutDashboard, 
-  Phone, 
-  Clock, 
-  BarChart, 
-  DollarSign, 
+import {
+  LayoutDashboard,
+  Phone,
+  Clock,
+  BarChart,
+  DollarSign,
   Settings,
-  LogOut
+  LogOut,
+  Sparkles
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
@@ -39,6 +40,7 @@ const Sidebar = () => {
     { name: "Voice Agents", href: "/voice-agents", icon: Phone },
     { name: "Call Logs", href: "/call-logs", icon: Clock },
     { name: "Analytics", href: "/analytics", icon: BarChart },
+    { name: "My Shopify Brain", href: "/my-shopify-brain", icon: Sparkles },
     { name: "Billing", href: "/billing", icon: DollarSign },
     { name: "Settings", href: "/settings", icon: Settings },
   ];
@@ -48,9 +50,9 @@ const Sidebar = () => {
       {/* Logo Section */}
       <div className="p-6 border-b border-border">
         <div className="flex items-center space-x-3">
-          <img 
-            src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png" 
-            alt="LunaLink AI" 
+          <img
+            src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png"
+            alt="LunaLink AI"
             className="h-8 w-auto"
           />
           <div>
@@ -84,7 +86,7 @@ const Sidebar = () => {
       {/* Shopify Connection Status */}
       <div className="p-4 border-t border-border space-y-3">
         <ShopifyConnectionStatus />
-        
+
         {/* Sign Out Button */}
         <Button
           onClick={handleSignOut}
