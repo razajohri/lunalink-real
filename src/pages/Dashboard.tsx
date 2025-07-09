@@ -168,23 +168,22 @@ const Dashboard = () => {
       <Layout>
         <div className="text-center space-y-6">
           <div className="space-y-4">
-            <h1 className="text-4xl font-bold text-foreground">🚀 Unlock Your AI Assistant</h1>
+            <h1 className="text-4xl font-bold text-foreground">Unlock Your AI Assistant</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Instantly connect your voice agents and get full dashboard access to start saving hours per day — or your competitors will.
             </p>
           </div>
           <Card className="p-8 max-w-lg mx-auto">
             <div className="space-y-4">
-              <div className="flex items-center justify-center space-x-2 text-amber-600">
-                <span className="text-2xl">⚠️</span>
-                <p className="font-semibold">Plans Are Required to Activate Your Assistant</p>
+              <div className="flex items-center justify-center space-x-2 text-primary">
+                <span className="font-semibold">Plans Are Required to Activate Your Assistant</span>
               </div>
               <p className="text-sm text-muted-foreground">
                 Go to Settings now to choose your plan and grab your access credentials before your setup stalls.
               </p>
-              <Button asChild className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600">
+              <Button asChild className="w-full bg-primary text-white hover:bg-primary/90">
                 <a href="/settings">
-                  🔥 Get Started Instantly → Configure Now
+                  Get Started Instantly → Configure Now
                 </a>
               </Button>
             </div>
