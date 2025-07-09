@@ -267,23 +267,21 @@ const Dashboard = () => {
                 </div>
               </div>
             </Card>
-          ) : (
-            {(!isConfigured || !credentials?.apiKey || !credentials?.assistantId) && (
-              <Card className="p-6 bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
-                <div className="flex items-center justify-between">
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-foreground">Get Started with LunaLink AI</h3>
-                    <p className="text-muted-foreground">
-                      Choose a plan to start using AI voice agents for your Shopify store.
-                    </p>
-                  </div>
-                  <Button asChild>
-                    <a href="/billing">View Pricing Plans</a>
-                  </Button>
+          ) : !isConfigured || !credentials?.apiKey || !credentials?.assistantId ? (
+            <Card className="p-6 bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
+              <div className="flex items-center justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-semibold text-foreground">Get Started with LunaLink AI</h3>
+                  <p className="text-muted-foreground">
+                    Choose a plan to start using AI voice agents for your Shopify store.
+                  </p>
                 </div>
-              </Card>
-            )}
-          )}
+                <Button asChild>
+                  <a href="/billing">View Pricing Plans</a>
+                </Button>
+              </div>
+            </Card>
+          ) : null}
 
           {/* Stats Cards */}
           {stats && (
