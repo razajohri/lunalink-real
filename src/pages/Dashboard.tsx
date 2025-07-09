@@ -166,7 +166,7 @@ const Dashboard = () => {
   if (!isConfigured) {
     return (
       <Layout>
-        <div className="text-center space-y-6">
+        <div className="text-center space-y-6 mt-24">
           <div className="space-y-4">
             <h1 className="text-4xl font-bold text-foreground">Unlock Your AI Assistant</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
