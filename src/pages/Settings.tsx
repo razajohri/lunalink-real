@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import VapiConfig from "@/components/VapiConfig";
 import Layout from "@/components/Layout";
-import { Settings as SettingsIcon, Bell, Clock, Store } from "lucide-react";
+import { Settings as SettingsIcon, Bell, Store } from "lucide-react";
 import { useVapi } from "@/contexts/VapiContext";
 
 const Settings = () => {
@@ -81,10 +81,6 @@ const Settings = () => {
             <TabsTrigger value="notifications" className="space-x-2">
               <Bell className="w-4 h-4" />
               <span>Notifications</span>
-            </TabsTrigger>
-            <TabsTrigger value="calls" className="space-x-2">
-              <Clock className="w-4 h-4" />
-              <span>Calls</span>
             </TabsTrigger>
           </TabsList>
 
@@ -197,81 +193,6 @@ const Settings = () => {
 
               <div className="flex justify-end pt-4 border-t">
                 <Button onClick={handleSaveNotifications}>Save Changes</Button>
-              </div>
-            </Card>
-          </TabsContent>
-
-          {/* Call Settings */}
-          <TabsContent value="calls" className="space-y-6">
-            <Card className="p-6 space-y-6">
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-foreground">Call Settings</h3>
-                <p className="text-sm text-muted-foreground">
-                  Configure voice agent behavior and call management preferences.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div className="space-y-1">
-                    <Label>Retry Failed Calls</Label>
-                    <p className="text-sm text-muted-foreground">
-                      Automatically retry failed calls after a delay
-                    </p>
-                  </div>
-                  <Switch
-                    checked={callSettings.retryFailedCalls}
-                    onCheckedChange={(checked) =>
-                      setCallSettings(prev => ({ ...prev, retryFailedCalls: checked }))
-                    }
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="quiet-start">Quiet Hours Start</Label>
-                    <Input
-                      id="quiet-start"
-                      type="time"
-                      value={callSettings.quietHoursStart}
-                      onChange={(e) =>
-                        setCallSettings(prev => ({ ...prev, quietHoursStart: e.target.value }))
-                      }
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="quiet-end">Quiet Hours End</Label>
-                    <Input
-                      id="quiet-end"
-                      type="time"
-                      value={callSettings.quietHoursEnd}
-                      onChange={(e) =>
-                        setCallSettings(prev => ({ ...prev, quietHoursEnd: e.target.value }))
-                      }
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="max-calls">Max Calls Per Hour</Label>
-                  <Input
-                    id="max-calls"
-                    type="number"
-                    value={callSettings.maxCallsPerHour}
-                    onChange={(e) =>
-                      setCallSettings(prev => ({ ...prev, maxCallsPerHour: parseInt(e.target.value) || 0 }))
-                    }
-                    placeholder="Maximum calls per hour"
-                  />
-                  <p className="text-xs text-muted-foreground">
-                    Set a limit to avoid overwhelming customers
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex justify-end pt-4 border-t">
-                <Button onClick={handleSaveCallSettings}>Save Changes</Button>
               </div>
             </Card>
           </TabsContent>

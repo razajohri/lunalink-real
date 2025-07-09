@@ -34,7 +34,7 @@ const VapiConfig = () => {
         apiKey: formData.apiKey.trim(),
         assistantId: formData.assistantId.trim()
       });
-      
+
       toast({
         title: "Configuration Saved",
         description: "Your Vapi credentials have been saved successfully.",
@@ -66,7 +66,7 @@ const VapiConfig = () => {
         <Alert>
           <Info className="h-4 w-4" />
           <AlertDescription>
-            <strong>Important:</strong> You're using your private API key for dashboard operations. 
+            <strong>Important:</strong> You're using your private API key for dashboard operations.
             This gives you full access to view calls, agents, and analytics. Keep your credentials secure.
           </AlertDescription>
         </Alert>
@@ -77,7 +77,7 @@ const VapiConfig = () => {
             <Input
               id="api-key"
               type="password"
-              placeholder="Enter your Vapi private API key"
+              placeholder="Add your API key"
               value={formData.apiKey}
               onChange={(e) => setFormData(prev => ({ ...prev, apiKey: e.target.value }))}
             />
@@ -123,7 +123,7 @@ const VapiConfig = () => {
               <p className="font-medium text-foreground">Select your pricing & sign up to a plan</p>
             </div>
           </div>
-          
+
           <div className="flex items-start space-x-3">
             <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
               <span className="text-xs font-semibold text-primary">2</span>
@@ -133,7 +133,7 @@ const VapiConfig = () => {
               <p>Our team will create an ecommerce custom voice agent for you and send you the credentials.</p>
             </div>
           </div>
-          
+
           <div className="flex items-start space-x-3">
             <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
               <span className="text-xs font-semibold text-primary">3</span>

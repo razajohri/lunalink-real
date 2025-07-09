@@ -25,10 +25,12 @@ const Billing = () => {
       description: "Perfect for small stores getting started",
       features: [
         "Cart recovery calls",
-        "Customer service calls", 
+        "Customer service calls",
         "45 calls per month",
         "Basic analytics",
-        "Email support"
+        "Email support",
+        "Free phone number",
+        "English language"
       ],
       calls: 45,
       icon: Zap,
@@ -36,7 +38,7 @@ const Billing = () => {
     },
     {
       id: "growth",
-      name: "Growth", 
+      name: "Growth",
       price: 70,
       period: "month",
       description: "Ideal for growing businesses",
@@ -46,7 +48,9 @@ const Billing = () => {
         "Order tracking via voice",
         "80 calls per month",
         "Advanced analytics",
-        "Priority support"
+        "Priority support",
+        "Free phone number",
+        "6+ languages"
       ],
       calls: 80,
       icon: Star,
@@ -56,7 +60,7 @@ const Billing = () => {
       id: "pro",
       name: "Pro",
       price: 200,
-      period: "month", 
+      period: "month",
       description: "For high-volume stores",
       features: [
         "All features included",
@@ -65,7 +69,9 @@ const Billing = () => {
         "Premium AI voices",
         "100+ calls per month",
         "Dedicated support",
-        "Custom integrations"
+        "Custom integrations",
+        "Free phone number",
+        "30+ languages"
       ],
       calls: 100,
       icon: Crown,
@@ -142,38 +148,38 @@ const Billing = () => {
     }
   };
 
-  const usagePercentage = usageData.callsLimit > 0 
-    ? (usageData.callsUsed / usageData.callsLimit) * 100 
+  const usagePercentage = usageData.callsLimit > 0
+    ? (usageData.callsUsed / usageData.callsLimit) * 100
     : 0;
 
   return (
     <Layout>
-      <div className="space-y-8">
+      <div className="space-y-4">
         {/* Header */}
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-foreground">Choose Your Plan</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center space-y-2">
+          <h1 className="text-2xl font-bold text-foreground">Choose Your Plan</h1>
+          <p className="text-base text-muted-foreground max-w-xl mx-auto">
             Boost your Shopify sales with AI-powered voice assistants that recover abandoned carts and provide stellar customer service.
           </p>
         </div>
 
         {/* Current Usage - Show only if user has a plan */}
         {currentPlan && (
-          <Card className="p-6 max-w-2xl mx-auto">
-            <div className="space-y-4">
+          <Card className="p-3 max-w-xl mx-auto">
+            <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-foreground">Current Usage</h3>
+                <h3 className="text-base font-semibold text-foreground">Current Usage</h3>
                 <Badge variant="secondary" className="capitalize">{currentPlan} Plan</Badge>
               </div>
 
-              <div className="space-y-3">
-                <div className="flex justify-between text-sm">
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground">Calls Used</span>
                   <span className="font-medium">
                     {usageData.callsUsed} / {usageData.callsLimit}
                   </span>
                 </div>
-                <Progress value={usagePercentage} className="h-2" />
+                <Progress value={usagePercentage} className="h-1.5" />
                 <p className="text-xs text-muted-foreground">
                   {Math.max(0, usageData.callsLimit - usageData.callsUsed)} calls remaining this month
                 </p>
@@ -183,83 +189,58 @@ const Billing = () => {
         )}
 
         {/* Pricing Plans */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
           {plans.map((plan) => {
             const Icon = plan.icon;
             const isCurrentPlan = currentPlan === plan.id;
-            
+
             return (
               <Card
                 key={plan.id}
-                className={`p-8 space-y-6 relative transition-all duration-300 hover:shadow-elegant ${
+                className={`p-4 space-y-4 relative transition-all duration-300 hover:shadow-elegant ${
                   plan.popular ? 'ring-2 ring-primary shadow-glow scale-105' : ''
                 } ${isCurrentPlan ? 'ring-2 ring-success' : ''}`}
               >
                 {plan.popular && (
-                  <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary">
+                  <Badge className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-primary text-xs px-2 py-1">
                     Most Popular
                   </Badge>
                 )}
 
-                {isCurrentPlan && (
-                  <Badge className="absolute -top-3 right-4 bg-success">
-                    Current Plan
-                  </Badge>
-                )}
-
-                <div className="text-center space-y-4">
-                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-                    <Icon className="w-8 h-8 text-primary" />
+                <div className="text-center space-y-2">
+                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+                    <Icon className="w-4 h-4 text-primary" />
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-bold text-foreground">{plan.name}</h3>
-                    <p className="text-muted-foreground">{plan.description}</p>
+                    <h3 className="text-lg font-bold text-foreground">{plan.name}</h3>
+                    <p className="text-xs text-muted-foreground">{plan.description}</p>
                   </div>
 
-                  <div className="space-y-2">
-                    <div className="text-5xl font-bold text-foreground">
+                  <div className="space-y-1">
+                    <div className="text-2xl font-bold text-foreground">
                       ${plan.price}
-                      <span className="text-lg font-normal text-muted-foreground">/{plan.period}</span>
+                      <span className="text-sm font-normal text-muted-foreground">/{plan.period}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      {plan.calls} calls per month
-                    </p>
                   </div>
                 </div>
 
-                <ul className="space-y-3">
+                <ul className="space-y-2">
                   {plan.features.map((feature, index) => (
-                    <li key={index} className="flex items-center space-x-3">
-                      <Check className="w-5 h-5 text-success flex-shrink-0" />
-                      <span className="text-foreground">{feature}</span>
+                    <li key={index} className="flex items-center space-x-2">
+                      <Check className="w-3 h-3 text-success flex-shrink-0" />
+                      <span className="text-xs text-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <Button
-                  onClick={() => handleSubscribe(plan.id)}
-                  disabled={loading || isCurrentPlan}
-                  className={`w-full h-12 text-lg ${
-                    isCurrentPlan 
-                      ? 'bg-success hover:bg-success/90' 
-                      : plan.popular 
-                        ? 'bg-primary hover:bg-primary/90' 
-                        : ''
-                  }`}
+                  className={`w-full py-1 text-sm ${isCurrentPlan ? 'bg-success hover:bg-success/90' : ''}`}
                   variant={isCurrentPlan ? 'default' : plan.popular ? 'default' : 'outline'}
+                  onClick={() => handleSubscribe(plan.id)}
+                  disabled={isCurrentPlan || loading}
                 >
-                  {isCurrentPlan ? (
-                    'Current Plan'
-                  ) : loading ? (
-                    'Processing...'
-                  ) : plan.id === 'basic' ? (
-                    <>Start with Basic <ArrowRight className="w-4 h-4 ml-2" /></>
-                  ) : plan.id === 'growth' ? (
-                    <>Choose Growth <ArrowRight className="w-4 h-4 ml-2" /></>
-                  ) : (
-                    <>Go Pro <ArrowRight className="w-4 h-4 ml-2" /></>
-                  )}
+                  {isCurrentPlan ? 'Current Plan' : plan.popular ? 'Upgrade Now' : 'Select Plan'}
                 </Button>
               </Card>
             );
