@@ -25,9 +25,7 @@ const Billing = () => {
       description: "Perfect for small stores getting started",
       features: [
         "Cart recovery calls",
-        "Customer service calls",
         "45 calls per month",
-        "Basic analytics",
         "Email support",
         "Free phone number",
         "English language"
@@ -45,10 +43,8 @@ const Billing = () => {
       features: [
         "Cart recovery + customer service",
         "Order cancellation calls",
-        "Order tracking via voice",
         "80 calls per month",
         "Advanced analytics",
-        "Priority support",
         "Free phone number",
         "6+ languages"
       ],
@@ -65,10 +61,8 @@ const Billing = () => {
       features: [
         "All features included",
         "Order confirmation calls",
-        "Follow-up campaigns",
         "Premium AI voices",
         "100+ calls per month",
-        "Dedicated support",
         "Custom integrations",
         "Free phone number",
         "30+ languages"
@@ -159,7 +153,7 @@ const Billing = () => {
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-bold text-foreground">Choose Your Plan</h1>
           <p className="text-base text-muted-foreground max-w-xl mx-auto">
-            Boost your Shopify sales with AI-powered voice assistants that recover abandoned carts and provide stellar customer service.
+            Activate AI voice. Recover carts. Boost sales. Right now.
           </p>
         </div>
 
