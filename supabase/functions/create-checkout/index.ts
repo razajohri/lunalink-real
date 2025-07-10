@@ -43,8 +43,8 @@ serve(async (req) => {
     // Plan pricing mapping
     const planPricing = {
       basic: { amount: 2899, name: "Basic Plan - 45 calls/month", calls: 45 },
-      growth: { amount: 7000, name: "Growth Plan - 80 calls/month", calls: 80 },
-      pro: { amount: 20000, name: "Pro Plan - 100+ calls/month", calls: 100 }
+      growth: { amount: 6800, name: "Growth Plan - 80 calls/month", calls: 80 },
+      pro: { amount: 19000, name: "Pro Plan - 100+ calls/month", calls: 100 }
     };
 
     const selectedPlan = planPricing[plan as keyof typeof planPricing];

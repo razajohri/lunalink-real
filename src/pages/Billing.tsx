@@ -37,7 +37,7 @@ const Billing = () => {
     {
       id: "growth",
       name: "Growth",
-      price: 70,
+      price: 68,
       period: "month",
       description: "Ideal for growing businesses",
       features: [
@@ -55,7 +55,7 @@ const Billing = () => {
     {
       id: "pro",
       name: "Pro",
-      price: 200,
+      price: 190,
       period: "month",
       description: "For high-volume stores",
       features: [
