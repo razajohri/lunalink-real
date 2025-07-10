@@ -32,7 +32,7 @@ const VoiceAgents = () => {
       trigger: 'Cart Recovery (2 hours)',
       phoneNumber: 'US/UK/EU +15',
       callCount: 143,
-      description: 'Reach out to customers who abandoned their shopping cart with a personalized call offering them a discount triggering them to complete their purchase.'
+      description: 'Reach out to customers who abandoned their cart with a personalized call offering them a discount triggering them to complete their purchase.'
     },
     {
       id: '2',

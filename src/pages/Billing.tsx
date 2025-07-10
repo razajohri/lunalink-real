@@ -157,6 +157,11 @@ const Billing = () => {
           </p>
         </div>
 
+        {/* Setup Fee Notice */}
+        <p className="text-xs text-warning text-center mb-2 font-semibold">
+          All plans require a one-time $20 setup on done for you basis.
+        </p>
+
         {/* Current Subscription Status */}
         {currentPlan && (
           <Card className="p-4 max-w-xl mx-auto bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20">
@@ -232,6 +237,9 @@ const Billing = () => {
                     <div className="text-2xl font-bold text-foreground">
                       ${plan.price}
                       <span className="text-sm font-normal text-muted-foreground">/{plan.period}</span>
+                    </div>
+                    <div className="text-xs text-warning font-medium">
+                      + $20 one-time setup fee
                     </div>
                   </div>
                 </div>

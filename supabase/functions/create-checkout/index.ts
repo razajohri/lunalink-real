@@ -52,7 +52,7 @@ serve(async (req) => {
     logStep("Plan pricing found", selectedPlan);
 
     const stripe = new Stripe(stripeKey, { apiVersion: "2023-10-16" });
-    
+
     // Check if customer exists
     const customers = await stripe.customers.list({ email: user.email, limit: 1 });
     let customerId;
@@ -64,7 +64,7 @@ serve(async (req) => {
     }
 
     const origin = req.headers.get("origin") || "https://lunalink-real.lovable.app";
-    
+
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       customer_email: customerId ? undefined : user.email,
@@ -72,7 +72,7 @@ serve(async (req) => {
         {
           price_data: {
             currency: "usd",
-            product_data: { 
+            product_data: {
               name: selectedPlan.name,
               description: `LunaLink AI ${plan} subscription with ${selectedPlan.calls} calls per month`
             },
@@ -81,11 +81,23 @@ serve(async (req) => {
           },
           quantity: 1,
         },
+        // Add one-time setup fee line item
+        {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: "One-Time Setup Fee",
+              description: "One-time setup charge for LunaLink AI subscription"
+            },
+            unit_amount: 2000, // $20.00 in cents
+          },
+          quantity: 1,
+        },
       ],
       mode: "subscription",
       success_url: `${origin}/payment-success?plan=${plan}`,
       cancel_url: `${origin}/billing?canceled=true`,
-      metadata: { 
+      metadata: {
         user_id: user.id,
         plan: plan,
         calls_limit: selectedPlan.calls.toString()
