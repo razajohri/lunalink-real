@@ -14,7 +14,8 @@ interface ShopifyContextType {
   store: ShopifyStore | null;
   isConnected: boolean;
   loading: boolean;
-  connectStore: (storeDomain: string) => void;
+  saveStoreDomain: (storeDomain: string) => Promise<void>;
+  saveAccessToken: (accessToken: string) => Promise<void>;
   refreshConnection: () => Promise<void>;
 }
 
@@ -66,21 +67,26 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
   };
 
-  const connectStore = async (storeDomain: string) => {
+  const saveStoreDomain = async (storeDomain: string) => {
     if (!user) return;
-
-    // Clean the domain (remove https:// and trailing slashes)
     const cleanDomain = storeDomain.replace(/^https?:\/\//, '').replace(/\/$/, '');
     const shop = cleanDomain.includes('.myshopify.com') ? cleanDomain : `${cleanDomain}.myshopify.com`;
+    await supabase.from('shopify_stores').upsert({
+      user_id: user.id,
+      store_domain: shop,
+      connected_at: new Date().toISOString(),
+    }, { onConflict: 'user_id' });
+    await fetchShopifyStore();
+  };
 
-    const clientId = '7bc2e2570fce7edadba44659613915e9';
-    const scope = 'read_checkouts,read_customers';
-    const redirectUri = 'https://lunalink-real.lovable.app/shopify/callback';
-    const state = user.id;
-
-    const oauthUrl = `https://${shop}/admin/oauth/authorize?client_id=${clientId}&scope=${scope}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${state}`;
-    
-    window.location.href = oauthUrl;
+  const saveAccessToken = async (accessToken: string) => {
+    if (!user) return;
+    await supabase.from('shopify_stores').upsert({
+      user_id: user.id,
+      access_token: accessToken,
+      connected_at: new Date().toISOString(),
+    }, { onConflict: 'user_id' });
+    await fetchShopifyStore();
   };
 
   const refreshConnection = async () => {
@@ -93,9 +99,10 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   const value: ShopifyContextType = {
     store,
-    isConnected: !!store,
+    isConnected: !!store?.store_domain && !!store?.access_token,
     loading,
-    connectStore,
+    saveStoreDomain,
+    saveAccessToken,
     refreshConnection,
   };
 
