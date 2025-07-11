@@ -14,6 +14,32 @@ const ShopifyConnect = () => {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
+  function handleDomainSubmit() {
+    setSaving(true);
+    setError('');
+    saveStoreDomain(storeDomain.trim())
+      .then(() => {
+        setStep('token');
+      })
+      .catch((e) => {
+        setError('Failed to save store domain.');
+      })
+      .finally(() => setSaving(false));
+  }
+
+  function handleTokenSubmit() {
+    setSaving(true);
+    setError('');
+    saveAccessToken(accessToken.trim())
+      .then(() => {
+        setStep('success');
+      })
+      .catch((e) => {
+        setError('Failed to save access token.');
+      })
+      .finally(() => setSaving(false));
+  }
+
   // Show green badge if connected
   if (isConnected) {
     return (
@@ -95,8 +121,8 @@ const ShopifyConnect = () => {
             <ol className="list-decimal list-inside text-xs space-y-1 text-muted-foreground">
               <li>Open your Shopify Admin Panel</li>
               <li>Go to <b>Settings → Apps and sales channels</b></li>
-              <li>Click <b>“Develop apps”</b></li>
-              <li>Click <b>“Create an app”</b></li>
+              <li>Click <b>"Develop apps"</b></li>
+              <li>Click <b>"Create an app"</b></li>
               <li>Name it <b>LunaLink AI</b></li>
               <li>Go to <b>Configuration → Admin API Integration</b></li>
               <li>Add these scopes:
@@ -109,11 +135,11 @@ const ShopifyConnect = () => {
                 </ul>
               </li>
               <li>Save and go to <b>API Credentials</b></li>
-              <li>Click <b>“Install app”</b></li>
+              <li>Click <b>"Install app"</b></li>
               <li>Copy the <b>Admin API access token</b> (starts with shpat_...) and Paste here</li>
             </ol>
             <div className="text-xs text-muted-foreground mt-2">
-              <b>Note:</b> You’ll only see this token once — save it securely.
+              <b>Note:</b> You'll only see this token once — save it securely.
             </div>
             <a
               href="https://www.youtube.com/watch?v=IexXYyL3lhQ"
@@ -128,32 +154,6 @@ const ShopifyConnect = () => {
       </Dialog>
     </>
   );
-
-  function handleDomainSubmit() {
-    setSaving(true);
-    setError('');
-    saveStoreDomain(storeDomain.trim())
-      .then(() => {
-        setStep('token');
-      })
-      .catch((e) => {
-        setError('Failed to save store domain.');
-      })
-      .finally(() => setSaving(false));
-  }
-
-  function handleTokenSubmit() {
-    setSaving(true);
-    setError('');
-    saveAccessToken(accessToken.trim())
-      .then(() => {
-        setStep('success');
-      })
-      .catch((e) => {
-        setError('Failed to save access token.');
-      })
-      .finally(() => setSaving(false));
-  }
 };
 
 export default ShopifyConnect;

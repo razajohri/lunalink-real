@@ -68,6 +68,8 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
   };
 
   const saveStoreDomain = async (storeDomain: string) => {
+    console.log('saveStoreDomain called with:', { storeDomain, user: user?.id });
+
     if (!user) {
       console.error('No user found when trying to save store domain');
       throw new Error('User not authenticated');
@@ -77,16 +79,26 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
       const cleanDomain = storeDomain.replace(/^https?:\/\//, '').replace(/\/$/, '');
       const shop = cleanDomain.includes('.myshopify.com') ? cleanDomain : `${cleanDomain}.myshopify.com`;
 
-      console.log('Saving store domain:', { user_id: user.id, store_domain: shop });
-
-      const { data, error } = await supabase.from('shopify_manual_connections').upsert({
+      const payload = {
         user_id: user.id,
         store_domain: shop,
         connected_at: new Date().toISOString(),
-      }, { onConflict: 'user_id' });
+      };
+
+      console.log('Attempting to save store domain with payload:', payload);
+
+      const { data, error } = await supabase.from('shopify_manual_connections').upsert(payload, { onConflict: 'user_id' });
+
+      console.log('Supabase response:', { data, error });
 
       if (error) {
         console.error('Error saving store domain:', error);
+        console.error('Error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        });
         throw error;
       }
 
@@ -94,6 +106,7 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
       await fetchShopifyStore();
     } catch (error) {
       console.error('Failed to save store domain:', error);
+      console.error('Full error object:', JSON.stringify(error, null, 2));
       throw error;
     }
   };
