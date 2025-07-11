@@ -46,7 +46,7 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
     try {
       console.log('Fetching Shopify store for user:', user.id);
       const { data, error } = await supabase
-        .from('shopify_stores')
+        .from('shopify_manual_connections')
         .select('*')
         .eq('user_id', user.id)
         .maybeSingle();
@@ -79,7 +79,7 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
       console.log('Saving store domain:', { user_id: user.id, store_domain: shop });
 
-      const { data, error } = await supabase.from('shopify_stores').upsert({
+      const { data, error } = await supabase.from('shopify_manual_connections').upsert({
         user_id: user.id,
         store_domain: shop,
         connected_at: new Date().toISOString(),
@@ -107,7 +107,7 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
     try {
       console.log('Saving access token for user:', user.id);
 
-      const { data, error } = await supabase.from('shopify_stores').upsert({
+      const { data, error } = await supabase.from('shopify_manual_connections').upsert({
         user_id: user.id,
         access_token: accessToken,
         connected_at: new Date().toISOString(),
