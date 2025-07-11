@@ -68,25 +68,62 @@ export const ShopifyProvider: React.FC<{ children: React.ReactNode }> = ({ child
   };
 
   const saveStoreDomain = async (storeDomain: string) => {
-    if (!user) return;
-    const cleanDomain = storeDomain.replace(/^https?:\/\//, '').replace(/\/$/, '');
-    const shop = cleanDomain.includes('.myshopify.com') ? cleanDomain : `${cleanDomain}.myshopify.com`;
-    await supabase.from('shopify_stores').upsert({
-      user_id: user.id,
-      store_domain: shop,
-      connected_at: new Date().toISOString(),
-    }, { onConflict: 'user_id' });
-    await fetchShopifyStore();
+    if (!user) {
+      console.error('No user found when trying to save store domain');
+      throw new Error('User not authenticated');
+    }
+
+    try {
+      const cleanDomain = storeDomain.replace(/^https?:\/\//, '').replace(/\/$/, '');
+      const shop = cleanDomain.includes('.myshopify.com') ? cleanDomain : `${cleanDomain}.myshopify.com`;
+
+      console.log('Saving store domain:', { user_id: user.id, store_domain: shop });
+
+      const { data, error } = await supabase.from('shopify_stores').upsert({
+        user_id: user.id,
+        store_domain: shop,
+        connected_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      if (error) {
+        console.error('Error saving store domain:', error);
+        throw error;
+      }
+
+      console.log('Store domain saved successfully:', data);
+      await fetchShopifyStore();
+    } catch (error) {
+      console.error('Failed to save store domain:', error);
+      throw error;
+    }
   };
 
   const saveAccessToken = async (accessToken: string) => {
-    if (!user) return;
-    await supabase.from('shopify_stores').upsert({
-      user_id: user.id,
-      access_token: accessToken,
-      connected_at: new Date().toISOString(),
-    }, { onConflict: 'user_id' });
-    await fetchShopifyStore();
+    if (!user) {
+      console.error('No user found when trying to save access token');
+      throw new Error('User not authenticated');
+    }
+
+    try {
+      console.log('Saving access token for user:', user.id);
+
+      const { data, error } = await supabase.from('shopify_stores').upsert({
+        user_id: user.id,
+        access_token: accessToken,
+        connected_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      if (error) {
+        console.error('Error saving access token:', error);
+        throw error;
+      }
+
+      console.log('Access token saved successfully:', data);
+      await fetchShopifyStore();
+    } catch (error) {
+      console.error('Failed to save access token:', error);
+      throw error;
+    }
   };
 
   const refreshConnection = async () => {
