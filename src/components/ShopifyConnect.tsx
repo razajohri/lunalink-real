@@ -58,7 +58,10 @@ const ShopifyConnect = () => {
         variant="destructive"
         size="sm"
         className="w-full justify-start text-left"
-        onClick={() => setStep('domain')}
+        onClick={() => {
+          console.log('Connect Store button clicked - should open modal, not redirect');
+          setStep('domain');
+        }}
       >
         <Store className="mr-2 h-4 w-4" />
         Connect Store
