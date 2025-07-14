@@ -15,14 +15,15 @@ import ShopifyCallback from "./pages/ShopifyCallback";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import NotFound from "./pages/NotFound";
 import MyShopifyBrain from "./pages/MyShopifyBrain";
+import Landing from "./pages/Landing";
 
 const App = () => (
   <TooltipProvider>
     <Routes>
-      <Route path="/" element={<Welcome />} />
+      <Route path="/" element={<Landing />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/profile-setup" element={<ProfileSetup />} />
-      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/voice-agents" element={<VoiceAgents />} />
       <Route path="/call-logs" element={<CallLogs />} />
       <Route path="/analytics" element={<Analytics />} />
