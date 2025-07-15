@@ -99,15 +99,12 @@ const FAQ = () => {
             <p className="text-gray-600 mb-6">
               Our support team is here to help you get the most out of LunaLink AI
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <button
                 onClick={handleContactSupport}
                 className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200"
               >
                 Contact Support
-              </button>
-              <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors duration-200">
-                View Documentation
               </button>
             </div>
             <div className="mt-4 text-sm text-gray-500">
