@@ -77,7 +77,7 @@ const Header = () => {
               onClick={handleOnboardNow}
               className="bg-blue-600 hover:bg-blue-700 transition-colors"
             >
-              Onboard Now
+              Login/Signup
             </Button>
           </div>
 
@@ -132,7 +132,7 @@ const Header = () => {
               onClick={handleOnboardNow}
               className="w-full bg-blue-600 hover:bg-blue-700 transition-colors"
             >
-              Onboard Now
+              Login/Signup
             </Button>
           </div>
         </div>
