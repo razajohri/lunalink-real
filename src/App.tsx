@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Routes, Route } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import Auth from "./pages/Auth";
+import Landing from "./pages/Landing";
 import ProfileSetup from "./pages/ProfileSetup";
 import Dashboard from "./pages/Dashboard";
 import VoiceAgents from "./pages/VoiceAgents";
@@ -20,6 +21,7 @@ const App = () => (
   <TooltipProvider>
     <Routes>
       <Route path="/" element={<Welcome />} />
+      <Route path="/welcome" element ={<Landing />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/profile-setup" element={<ProfileSetup />} />

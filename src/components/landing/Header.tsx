@@ -1,0 +1,144 @@
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
+
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev);
+  };
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleOnboardNow = () => {
+    window.location.href = '/auth';
+  };
+
+  return (
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <div className="flex-shrink-0 font-bold text-xl text-blue-600">
+            <span className="flex items-center gap-2">
+              <img
+                src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png"
+                alt="LunaLink AI Logo"
+                className="w-10 h-10 object-contain"
+              />
+              LunaLink AI
+            </span>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-8">
+            <button
+              onClick={() => scrollToSection('features')}
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              Features
+            </button>
+            <button
+              onClick={() => scrollToSection('how-it-works')}
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              How It Works
+            </button>
+            <button
+              onClick={() => scrollToSection('testimonials')}
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              Testimonials
+            </button>
+            <button
+              onClick={() => scrollToSection('pricing')}
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              Pricing
+            </button>
+            <button
+              onClick={() => scrollToSection('faq')}
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              FAQ
+            </button>
+          </nav>
+
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <Button
+              onClick={handleOnboardNow}
+              className="bg-blue-600 hover:bg-blue-700 transition-colors"
+            >
+              Onboard Now
+            </Button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-b border-gray-100 shadow-sm">
+          <div className="px-4 pt-2 pb-6 space-y-4">
+            <button
+              onClick={() => scrollToSection('features')}
+              className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
+            >
+              Features
+            </button>
+            <button
+              onClick={() => scrollToSection('how-it-works')}
+              className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
+            >
+              How It Works
+            </button>
+            <button
+              onClick={() => scrollToSection('testimonials')}
+              className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
+            >
+              Testimonials
+            </button>
+            <button
+              onClick={() => scrollToSection('pricing')}
+              className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
+            >
+              Pricing
+            </button>
+            <button
+              onClick={() => scrollToSection('faq')}
+              className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
+            >
+              FAQ
+            </button>
+            <Button
+              onClick={handleOnboardNow}
+              className="w-full bg-blue-600 hover:bg-blue-700 transition-colors"
+            >
+              Onboard Now
+            </Button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Header;

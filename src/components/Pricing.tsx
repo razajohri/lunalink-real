@@ -6,56 +6,58 @@ const Pricing = () => {
   const plans = [
     {
       name: "Basic",
-      description: "Perfect for small stores getting started with cart recovery",
-      price: "$99",
+      description: "Perfect for small stores getting started",
+      price: "$28.99",
       period: "/month",
       features: [
-        "Up to 100 voice calls per month",
-        "Basic AI voice agent",
-        "Call logs & transcripts",
-        "Standard reporting",
+        "Cart recovery calls",
+        "45 calls per month",
         "Email support",
-        "Free phone number included"
+        "Free phone number",
+        "English language"
       ],
       popular: false,
-      cta: "Join Waitlist"
+      cta: "Onboard Now"
     },
     {
-      name: "Premium",
-      description: "For growing stores with more abandoned carts to recover",
-      price: "$199",
+      name: "Growth",
+      description: "Ideal for growing businesses",
+      price: "$68",
       period: "/month",
       features: [
-        "Up to 300 voice calls per month",
-        "Advanced AI voice agent",
-        "Custom script optimization",
-        "Detailed analytics dashboard",
-        "Priority setup & support",
-        "Free phone number included",
-        "Personal onboarding call"
+        "Cart recovery + customer service",
+        "Order cancellation calls",
+        "80 calls per month",
+        "Advanced analytics",
+        "Free phone number",
+        "6+ languages"
       ],
       popular: true,
-      cta: "Join Waitlist"
+      cta: "Onboard Now"
     },
     {
-      name: "Enterprise",
-      description: "For high-volume stores needing maximum recovery",
-      price: "$399",
+      name: "Pro",
+      description: "For high-volume stores",
+      price: "$190",
       period: "/month",
       features: [
-        "Up to 1,000 voice calls per month",
-        "Premium AI voice agent",
-        "Custom voice & brand personality",
-        "Advanced analytics & reporting",
-        "Dedicated account manager",
-        "Free phone number included",
-        "Integration with other systems",
-        "Custom call strategies"
+        "All features included",
+        "Order confirmation calls",
+        "Premium AI voices",
+        "120+ calls per month",
+        "Custom integrations",
+        "Free phone number",
+        "30+ languages"
       ],
       popular: false,
-      cta: "Contact Sales"
+      cta: "Onboard Now"
     }
   ];
+
+  const handleCtaClick = (cta: string) => {
+    // Navigate to auth page for onboarding
+    window.location.href = '/auth';
+  };
 
   const scrollToWaitlist = () => {
     document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
@@ -73,8 +75,8 @@ const Pricing = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`bg-white rounded-xl overflow-hidden shadow-md border ${
                 plan.popular ? 'border-cartcall-500 ring-2 ring-cartcall-200' : 'border-gray-200'
               }`}
@@ -91,10 +93,10 @@ const Pricing = () => {
                   <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
                   <span className="text-gray-600">{plan.period}</span>
                 </div>
-                <Button 
-                  onClick={scrollToWaitlist} 
+                <Button
+                  onClick={() => handleCtaClick(plan.cta)}
                   className={`w-full mb-6 ${
-                    plan.popular 
+                    plan.popular
                       ? 'bg-cartcall-600 hover:bg-cartcall-700'
                       : 'bg-gray-900 hover:bg-gray-800'
                   }`}
@@ -119,9 +121,10 @@ const Pricing = () => {
           <p className="text-gray-600 mb-6">
             Contact us for custom pricing tailored to your specific needs and call volume.
           </p>
-          <Button 
-            variant="outline" 
+                    <Button
+            variant="outline"
             className="border-cartcall-600 text-cartcall-600 hover:bg-cartcall-50"
+            onClick={() => handleCtaClick("Contact Sales")}
           >
             Contact Sales
           </Button>

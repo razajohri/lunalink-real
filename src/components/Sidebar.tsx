@@ -51,7 +51,7 @@ const Sidebar = () => {
       <div className="p-6 border-b border-border">
         <div className="flex items-center space-x-3">
           <img
-            src="/src/assets/lunalink-logo.jpg"
+            src="/lovable-uploads/4724f8bd-cc0b-401b-80fe-9f041d72c595.png"
             alt="LunaLink AI"
             className="h-8 w-auto"
           />

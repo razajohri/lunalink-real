@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* LunaLink AI Design System - All colors, gradients, fonts, etc defined here. 
+/* LunaLink AI Design System - All colors, gradients, fonts, etc defined here.
 All colors MUST be HSL for theme consistency.
 */
 
@@ -13,48 +13,48 @@ All colors MUST be HSL for theme consistency.
     --primary-foreground: 0 0% 100%;  /* White text on primary */
     --primary-glow: 249 100% 70%;     /* Luna Purple #7c4dff */
     --luna-light: 206 73% 69%;        /* Luna Light Blue #63b3ed */
-    
+
     /* Semantic Colors */
     --success: 160 58% 40%;           /* Success Green #10b981 */
     --warning: 45 93% 47%;            /* Warning Orange #f59e0b */
     --destructive: 0 84% 60%;         /* Error Red #ef4444 */
     --destructive-foreground: 0 0% 100%;
-    
+
     /* Background System */
     --background: 210 20% 98%;        /* Main Background #f8fafc */
     --foreground: 222 84% 5%;         /* Primary Text #0f172a */
-    
+
     --card: 0 0% 100%;                /* Card Background white */
     --card-foreground: 222 84% 5%;
-    
+
     --popover: 0 0% 100%;
     --popover-foreground: 222 84% 5%;
-    
+
     /* UI Elements */
     --secondary: 210 40% 96%;
     --secondary-foreground: 222 47% 11%;
-    
+
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;  /* Muted Text #64748b */
-    
+
     --accent: 217 60% 50%;
     --accent-foreground: 0 0% 100%;
-    
+
     --border: 214 32% 91%;
     --input: 214 32% 91%;
     --ring: 217 60% 50%;
-    
+
     /* Design System Tokens */
     --gradient-primary: linear-gradient(135deg, hsl(217 60% 50%) 0%, hsl(217 60% 40%) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(215 28% 17%) 100%);
     --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-    
+
     --shadow-elegant: 0 10px 30px -10px hsl(217 60% 50% / 0.3);
     --shadow-glow: 0 0 40px hsl(249 100% 70% / 0.4);
     --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.1);
-    
+
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
@@ -121,4 +121,52 @@ All colors MUST be HSL for theme consistency.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Add animation keyframes for the waveform */
+@keyframes waveform1 {
+  0%, 100% { height: 4px; }
+  50% { height: 12px; }
+}
+
+@keyframes waveform2 {
+  0%, 100% { height: 6px; }
+  50% { height: 20px; }
+}
+
+@keyframes waveform3 {
+  0%, 100% { height: 8px; }
+  50% { height: 16px; }
+}
+
+@keyframes waveform4 {
+  0%, 100% { height: 10px; }
+  50% { height: 24px; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.3; }
+  50% { opacity: 0.1; }
+  100% { transform: scale(1.1); opacity: 0; }
+}
+
+/* Add animation classes */
+.animate-waveform1 {
+  animation: waveform1 1.2s ease-in-out infinite;
+}
+
+.animate-waveform2 {
+  animation: waveform2 1.3s ease-in-out infinite;
+}
+
+.animate-waveform3 {
+  animation: waveform3 1s ease-in-out infinite;
+}
+
+.animate-waveform4 {
+  animation: waveform4 1.4s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
 }
