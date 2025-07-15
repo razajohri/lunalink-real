@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Phone, MessageSquare, BarChart, Users } from "lucide-react";
+import { Phone, MessageSquare, BarChart, Users, Sparkles } from "lucide-react";
 import Header from "@/components/landing/Header";
 import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
@@ -41,6 +41,11 @@ const Welcome = () => {
       icon: Users,
       title: "24/7 Customer Service",
       description: "Round-the-clock customer support automation that never sleeps."
+    },
+    {
+      icon: Sparkles,
+      title: "Shopify Brain",
+      description: "Chat with your store like ChatGPT. Get live stats, automate actions, and manage everything through natural conversation."
     }
   ];
 
