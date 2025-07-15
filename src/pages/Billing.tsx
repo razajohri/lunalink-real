@@ -269,9 +269,10 @@ const Billing = () => {
         {/* Custom Solution CTA */}
         <Card className="p-4 text-center bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20 max-w-4xl mx-auto">
           <div className="space-y-2">
-            <h3 className="text-lg font-bold text-foreground">Need a Custom Solution?</h3>
+            <h3 className="text-lg font-bold text-foreground">Not sure if it’s worth it? You’re fully covered.</h3>
             <p className="text-muted-foreground text-base">
-              Contact us for tailored AI tools designed specifically for your Shopify store's unique needs.
+            Try LunaLink AI for 48 hours with a money-back guarantee — full refund, no questions asked.
+
             </p>
             <Button variant="outline" size="sm" className="mt-2">
               Contact Sales Team
