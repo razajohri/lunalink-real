@@ -56,14 +56,14 @@ const Welcome = () => {
               <div className="space-y-6">
                 <div className="space-y-4">
                   <h2 className="text-5xl font-extrabold text-blue-900 dark:text-blue-200 leading-tight drop-shadow-sm">
-                    Recover Abandoned Carts & Automate Customer Service
+                    AI doesn't sleep. Neither should your revenue.
                   </h2>
                   <h3 className="text-2xl font-semibold text-primary">
-                    with AI Sales Rep
+                    Automate abandoned cart recovery and customer service with AI reps that sell and support 24/7—without needing lunch breaks or PTO.
                   </h3>
                 </div>
                 <p className="text-xl font-medium text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Boost your sales and improve customer satisfaction with powerful AI voice and messaging agents that work 24/7.
+                  Want the breakdown?
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -73,7 +73,7 @@ const Welcome = () => {
                   onClick={handleOnboardNow}
                   disabled={isStarting}
                 >
-                  {isStarting ? "Starting..." : "Onboard Now"}
+                  {isStarting ? "Starting..." : "Get Started"}
                 </Button>
                 <Button
                   size="lg"
