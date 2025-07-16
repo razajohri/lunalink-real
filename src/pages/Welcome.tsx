@@ -24,8 +24,8 @@ const Welcome = () => {
   const features = [
     {
       icon: Phone,
-      title: "AI Voice Agents",
-      description: "Intelligent voice assistants that handle customer calls 24/7 with natural conversations."
+      title: "WhatsApp Calling & Text Agent",
+      description: "Add inbound calling and chat agent to handle customers queries via WhatsApp."
     },
     {
         icon: Sparkles,
@@ -48,105 +48,59 @@ const Welcome = () => {
     <>
       <Header />
       <Hero />
-      <section className="relative z-10 py-20 bg-gradient-to-b from-white via-blue-50 to-blue-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center rounded-3xl shadow-elegant bg-white/90 dark:bg-gray-950/90 p-10 md:p-16 border border-blue-100 dark:border-gray-800">
-          {/* Left Content */}
-            <div className="space-y-10 animate-fade-in">
-            <div className="space-y-6">
-              <div className="space-y-4">
-                  <h2 className="text-5xl font-extrabold text-blue-900 dark:text-blue-200 leading-tight drop-shadow-sm">
-                    AI doesn't sleep. Neither should your revenue.
-                </h2>
-                  <h3 className="text-2xl font-semibold text-primary">
-                    Automate abandoned cart recovery and customer service with AI reps that sell and support 24/7—without needing lunch breaks or PTO.
-                </h3>
+      {/* ROI Comparison Section */}
+      <section className="my-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-10">The ROI of LunaLink</h2>
+        </div>
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          {/* Humans Column */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-6 text-center">Humans</h3>
+            <div className="space-y-4">
+              <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
+                <span className="text-red-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' /></svg></span>
+                <span className="text-gray-700">Works 40 hrs/week</span>
               </div>
-                <p className="text-xl font-medium text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Want the breakdown?
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                  className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 shadow-lg"
-                  onClick={handleOnboardNow}
-                disabled={isStarting}
-              >
-                {isStarting ? "Starting..." : "Get Started"}
-              </Button>
-              <Button
-                size="lg"
-                  className="text-lg px-8 py-6 bg-primary/10 text-primary border border-primary hover:bg-primary/20 shadow-lg"
-                  onClick={() => window.location.href = "https://youtu.be/2w1xD8Wc8l4"}
-              >
-                Watch Demo
-              </Button>
-            </div>
-              <div className="flex flex-wrap gap-6 mt-6 text-gray-700 dark:text-gray-300">
-                <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-success rounded-full"></div>
-                  <span className="font-medium">99.9% Uptime</span>
+              <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
+                <span className="text-red-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' /></svg></span>
+                <span className="text-gray-700">~$2.35 cost per call</span>
               </div>
-                <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-success rounded-full"></div>
-                  <span className="font-medium">24/7 Support</span>
+              <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
+                <span className="text-red-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' /></svg></span>
+                <span className="text-gray-700">Takes 1 call at a time</span>
               </div>
-                <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-success rounded-full"></div>
-                  <span className="font-medium">Built for Ecommerce</span>
-                </div>
+              <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
+                <span className="text-red-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' /></svg></span>
+                <span className="text-gray-700">Speaks 1 or 2 languages</span>
               </div>
             </div>
-            {/* Abandoned Cart Recovery Feature Steps */}
-            <div className="mt-6 mb-2 max-w-xl bg-blue-50 dark:bg-gray-800 border border-blue-200 dark:border-gray-700 rounded-2xl shadow-card p-6">
-              <h4 className="text-xl font-bold text-blue-900 dark:text-blue-200 mb-2 text-center">How Abandoned Cart Recovery Works</h4>
-              <ol className="list-decimal list-inside space-y-1 text-base text-blue-900 dark:text-blue-100">
-                <li>Our AI calls the customer who abandoned cart.</li>
-                <li>Customer asks a question about the product and gets it answered.</li>
-                <li>AI sends them a discount code with <span className="font-semibold">verbal</span> savings amount as well.</li>
-                <li>Customer converts.</li>
-                <li><span className="font-semibold">Add this to your brand now.</span></li>
-              </ol>
+          </div>
+          {/* AI Support Rep Column */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-6 text-center">Luna, the AI support rep</h3>
+            <div className="space-y-4">
+              <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
+                <span className="text-green-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' /></svg></span>
+                <span className="text-gray-700">Works 168 hrs/week</span>
+              </div>
+              <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
+                <span className="text-green-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' /></svg></span>
+                <span className="text-gray-700">~$0.38 cost per call</span>
+              </div>
+              <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
+                <span className="text-green-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' /></svg></span>
+                <span className="text-gray-700">Takes 15+ calls at a time</span>
+              </div>
+              <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
+                <span className="text-green-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' /></svg></span>
+                <span className="text-gray-700">Speaks 30 languages</span>
+              </div>
             </div>
-          {/* Right Feature Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-fade-in">
-            {features.map((feature, index) => (
-              <Card
-                key={index}
-                  className="p-8 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 border-0 hover:scale-105 transition-all duration-300 shadow-elegant rounded-2xl"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="space-y-4">
-                    <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center shadow-md">
-                      <feature.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="space-y-2">
-                      <h3 className="font-semibold text-white text-lg tracking-wide">{feature.title}</h3>
-                      <p className="text-white/90 text-base leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            ))}
           </div>
         </div>
-        {/* Bottom Stats */}
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 text-center animate-fade-in">
-            <div className="space-y-2 bg-white/80 dark:bg-gray-900/80 rounded-2xl shadow-card p-8 border border-blue-100 dark:border-gray-800">
-              <div className="text-2xl font-bold text-blue-900 dark:text-blue-200">Increase Ecom Sales with personalized AI</div>
-              <div className="text-gray-700 dark:text-gray-300"></div>
-            </div>
-            <div className="space-y-2 bg-white/80 dark:bg-gray-900/80 rounded-2xl shadow-card p-8 border border-blue-100 dark:border-gray-800">
-              <div className="text-4xl font-extrabold text-blue-700 dark:text-blue-300">98.5%</div>
-              <div className="text-gray-700 dark:text-gray-300">Success Rate</div>
-          </div>
-            <div className="space-y-2 bg-white/80 dark:bg-gray-900/80 rounded-2xl shadow-card p-8 border border-blue-100 dark:border-gray-800">
-              <div className="text-4xl font-extrabold text-blue-700 dark:text-blue-300">24/7</div>
-              <div className="text-gray-700 dark:text-gray-300">Always Available</div>
-          </div>
-          </div>
+        <div className="text-center mt-12">
+          <span className="inline-block bg-green-100 text-green-700 text-2xl font-bold px-8 py-4 rounded-full shadow">You save <span className="text-3xl">83%</span> <span role="img" aria-label="money">🤑</span></span>
         </div>
       </section>
       <Features />
