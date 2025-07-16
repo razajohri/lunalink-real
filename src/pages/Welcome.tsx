@@ -98,6 +98,17 @@ const Welcome = () => {
                 </div>
               </div>
             </div>
+            {/* Abandoned Cart Recovery Feature Steps */}
+            <div className="mt-6 mb-2 max-w-xl bg-blue-50 dark:bg-gray-800 border border-blue-200 dark:border-gray-700 rounded-2xl shadow-card p-6">
+              <h4 className="text-xl font-bold text-blue-900 dark:text-blue-200 mb-2 text-center">How Abandoned Cart Recovery Works</h4>
+              <ol className="list-decimal list-inside space-y-1 text-base text-blue-900 dark:text-blue-100">
+                <li>Our AI calls the customer who abandoned cart.</li>
+                <li>Customer asks a question about the product and gets it answered.</li>
+                <li>AI sends them a discount code with <span className="font-semibold">verbal</span> savings amount as well.</li>
+                <li>Customer converts.</li>
+                <li><span className="font-semibold">Add this to your brand now.</span></li>
+              </ol>
+            </div>
           {/* Right Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-fade-in">
             {features.map((feature, index) => (
