@@ -30,11 +30,11 @@ const HowItWorks = () => {
             Get up and running in minutes with our completely done-for-you Shopify app
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="bg-gray-800 border border-gray-700 rounded-xl p-6 relative shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="mb-6 flex items-center justify-center h-16 w-16 rounded-full bg-gray-700 mx-auto">
@@ -49,7 +49,27 @@ const HowItWorks = () => {
             </div>
           ))}
         </div>
-        
+        {/* Abandoned Cart Recovery Feature Steps */}
+        <div className="mt-14 mb-8 max-w-3xl mx-auto bg-blue-50 dark:bg-gray-800 border border-blue-200 dark:border-gray-700 rounded-2xl shadow-card p-8">
+          <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-200 mb-4 text-center">How Abandoned Cart Recovery Works</h3>
+          <ol className="list-decimal list-inside space-y-2 text-lg text-blue-900 dark:text-blue-100">
+            <li>Our AI calls the customer who abandoned cart.</li>
+            <li>Customer asks a question about the product and gets it answered.</li>
+            <li>AI sends them a discount code with <span className="font-semibold">verbal</span> savings amount as well.</li>
+            <li>Customer converts.</li>
+            <li><span className="font-semibold">Add this to your brand now.</span></li>
+          </ol>
+        </div>
+        {/* Watch Demo Button */}
+        <div className="flex justify-center mt-10">
+          <button
+            className="text-lg px-8 py-6 bg-primary/10 text-primary border border-primary rounded-lg hover:bg-primary/20 shadow-lg transition-colors duration-200"
+            onClick={() => window.location.href = "https://youtu.be/2w1xD8Wc8l4"}
+          >
+            Watch Demo
+          </button>
+        </div>
+
         <div className="mt-16 bg-gray-800 rounded-xl p-6 md:p-8 border border-gray-700">
           <div className="flex flex-col md:flex-row items-center">
             <div className="mb-6 md:mb-0 md:mr-8">
