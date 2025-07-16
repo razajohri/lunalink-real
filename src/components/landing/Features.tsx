@@ -58,10 +58,11 @@ const features = [
     ),
   },
   {
-    title: "Voice & Text Communication",
-    description: "Engage customers through phone calls, SMS, email, and chat with consistent AI-powered responses across all channels.",
+    title: "WhatsApp Calling & Text Agent",
+    description: "Add inbound calling and chat agent to handle customers queries via WhatsApp.",
     icon: (
-      <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+      // You can use a phone or chat SVG icon here, or reuse one from above
+      <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 10.5a8.38 8.38 0 001.9 5.4l-1.4 4.1 4.2-1.4A8.5 8.5 0 1012 3.5a8.5 8.5 0 00-8.5 7z" /></svg>
     ),
   },
 ];

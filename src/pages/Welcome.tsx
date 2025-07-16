@@ -105,6 +105,18 @@ const Welcome = () => {
       </section>
       <Features />
       <HowItWorks />
+      <div className="mt-14 mb-8 max-w-3xl mx-auto bg-blue-50 dark:bg-gray-800 border border-blue-200 dark:border-gray-700 rounded-2xl shadow-card p-8">
+  <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-200 mb-4 text-center">
+    How Abandoned Cart Recovery Works
+  </h3>
+  <ol className="list-decimal list-inside space-y-2 text-lg text-blue-900 dark:text-blue-100">
+    <li>Our AI calls the customer who abandoned cart.</li>
+    <li>Customer asks a question about the product and gets it answered.</li>
+    <li>AI sends them a discount code with <span className="font-semibold">verbal</span> savings amount as well.</li>
+    <li>Customer converts.</li>
+    <li><span className="font-semibold">Add this to your brand now.</span></li>
+  </ol>
+</div>
       <Testimonials />
       <Pricing />
       <FAQ />
