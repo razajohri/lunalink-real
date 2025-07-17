@@ -106,12 +106,12 @@ const Welcome = () => {
       {/* Real Brands Have Real Numbers Section */}
       <div className="mt-14 mb-8 max-w-3xl mx-auto bg-blue-50 dark:bg-gray-800 border border-blue-200 dark:border-gray-700 rounded-2xl shadow-card p-8">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-          Real Brands Have Real Numbers.
+          Why I need a Phone Number.
         </h2>
         <p className="text-xl text-gray-700 dark:text-gray-300 flex items-center justify-center gap-2 text-center">
           <span role="img" aria-label="phone">📞</span>
           A Real Number Builds Real Trust<br/>
-          Adding a phone number makes your store more feel legit. It boosts customer confidence, handles customer inquiries & orders, calls abandoned checkouts, and increases brand authority— even if they never call.
+          Adding a phone number makes your store more feel legit. It boosts customer confidence, handles customer inquiries & orders,increases sales, calls abandoned checkouts, and increases brand authority— even if they never call.
         </p>
       </div>
       <Features />
