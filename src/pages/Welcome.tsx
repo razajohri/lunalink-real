@@ -103,6 +103,109 @@ const Welcome = () => {
           <span className="inline-block bg-green-100 text-green-700 text-2xl font-bold px-8 py-4 rounded-full shadow">You save <span className="text-3xl">83%</span> <span role="img" aria-label="money">🤑</span></span>
         </div>
       </section>
+      {/* MyShopifyBrain Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              Meet Your Shopify Brain
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Chat with your store like ChatGPT. Get live stats, automate actions, and manage everything through natural conversation.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Left Content */}
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  Your AI-Powered Store Assistant
+                </h3>
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                  MyShopifyBrain is your intelligent companion that understands your store inside and out. Ask questions, get insights, and take action - all through natural conversation.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">Live Store Analytics</h4>
+                    <p className="text-gray-600 dark:text-gray-300">Get real-time sales data, customer insights, and performance metrics instantly.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">Automated Actions</h4>
+                    <p className="text-gray-600 dark:text-gray-300">Create discounts, update inventory, and manage orders through simple chat commands.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">Natural Conversation</h4>
+                    <p className="text-gray-600 dark:text-gray-300">No complex interfaces needed. Just chat naturally and get things done.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Button
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold"
+                  onClick={() => window.location.href = "/my-shopify-brain"}
+                >
+                  Try MyShopifyBrain
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Visual */}
+            <div className="relative">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-3">
+                      <p className="text-sm text-gray-600 dark:text-gray-300">What were my sales yesterday?</p>
+                    </div>
+                    <div className="bg-blue-100 dark:bg-blue-900 rounded-lg p-3 ml-8">
+                      <p className="text-sm text-blue-800 dark:text-blue-200">Yesterday you had $2,847 in sales from 23. Your top product was...</p>
+                    </div>
+                    <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-3">
+                      <p className="text-sm text-gray-600 dark:text-gray-300">Create a 20% discount for new customers</p>
+                    </div>
+                    <div className="bg-blue-100 dark:bg-blue-900 rounded-lg p-3 ml-8">
+                      <p className="text-sm text-blue-800 dark:text-blue-200">✅ Discount code 'WELCOME20' created and applied to new customers</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <Features />
       <HowItWorks />
       <div className="mt-14 mb-8 max-w-3xl mx-auto bg-blue-50 dark:bg-gray-800 border border-blue-200 dark:border-gray-700 rounded-2xl shadow-card p-8">
