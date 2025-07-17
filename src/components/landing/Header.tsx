@@ -72,7 +72,13 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-4">
+            <Button
+              onClick={() => window.location.href = "https://youtube.com/playlist?list=PLEi7sibV01icwLju2G0z5XX8PdqMa968&si=YNPaseq6LxMuRn9"}
+              className="bg-primary/10 text-primary border border-primary hover:bg-primary/20 transition-colors"
+            >
+              Call Demo
+            </Button>
             <Button
               onClick={handleOnboardNow}
               className="bg-blue-600 hover:bg-blue-700 transition-colors"
@@ -132,7 +138,7 @@ const Header = () => {
   size="lg"
   className="text-lg px-8 py-6 bg-primary/10 text-primary border border-primary hover:bg-primary/20 shadow-lg"
   onClick={() => window.location.href = "https://youtube.com/playlist?list=PLEi7sibV01icwLju2cG0z5XX8PdqMa968&si=YNPaseq6LxMuRn9R"}
->
+  >
   Call Demo
 </Button>
             <Button
