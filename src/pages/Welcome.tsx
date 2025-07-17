@@ -103,6 +103,20 @@ const Welcome = () => {
           <span className="inline-block bg-green-100 text-green-700 text-2xl font-bold px-8 py-4 rounded-full shadow">You save <span className="text-3xl">83%</span> <span role="img" aria-label="money">🤑</span></span>
         </div>
       </section>
+      <Features />
+      <HowItWorks />
+      <div className="mt-14 mb-8 max-w-3xl mx-auto bg-blue-50 dark:bg-gray-800 border border-blue-200 dark:border-gray-700 rounded-2xl shadow-card p-8">
+  <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-200 mb-4 text-center">
+    How Abandoned Cart Recovery Works
+  </h3>
+  <ol className="list-decimal list-inside space-y-2 text-lg text-blue-900 dark:text-blue-100">
+    <li>Our AI calls the customer who abandoned cart.</li>
+    <li>Customer asks a question about the product and gets it answered.</li>
+    <li>AI sends them a discount code with <span className="font-semibold">verbal</span> savings amount as well.</li>
+    <li>Customer converts.</li>
+    <li><span className="font-semibold">Add this to your brand now.</span></li>
+  </ol>
+</div>
       {/* MyShopifyBrain Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -169,9 +183,9 @@ const Welcome = () => {
                 <Button
                   size="lg"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold"
-                  onClick={() => window.location.href = "/my-shopify-brain"}
+                  onClick={() => window.location.href = "/auth"}
                 >
-                  Try MyShopifyBrain
+                  Try MyShopifyBrain - Coming Soon
                 </Button>
               </div>
             </div>
@@ -206,20 +220,6 @@ const Welcome = () => {
           </div>
         </div>
       </section>
-      <Features />
-      <HowItWorks />
-      <div className="mt-14 mb-8 max-w-3xl mx-auto bg-blue-50 dark:bg-gray-800 border border-blue-200 dark:border-gray-700 rounded-2xl shadow-card p-8">
-  <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-200 mb-4 text-center">
-    How Abandoned Cart Recovery Works
-  </h3>
-  <ol className="list-decimal list-inside space-y-2 text-lg text-blue-900 dark:text-blue-100">
-    <li>Our AI calls the customer who abandoned cart.</li>
-    <li>Customer asks a question about the product and gets it answered.</li>
-    <li>AI sends them a discount code with <span className="font-semibold">verbal</span> savings amount as well.</li>
-    <li>Customer converts.</li>
-    <li><span className="font-semibold">Add this to your brand now.</span></li>
-  </ol>
-</div>
       <Testimonials />
       <Pricing />
       <FAQ />
