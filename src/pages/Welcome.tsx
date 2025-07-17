@@ -31,7 +31,7 @@ const Welcome = () => {
         icon: Sparkles,
         title: "Shopify Brain",
         description: "Chat with your store like ChatGPT. Get live stats, automate actions, and manage everything through natural conversation."
-      },
+    },
     {
       icon: BarChart,
       title: "Performance Analytics",
@@ -57,7 +57,7 @@ const Welcome = () => {
           {/* Humans Column */}
           <div>
             <h3 className="text-2xl font-semibold mb-6 text-center">Humans</h3>
-            <div className="space-y-4">
+              <div className="space-y-4">
               <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
                 <span className="text-red-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' /></svg></span>
                 <span className="text-gray-700">Works 40 hrs/week</span>
@@ -91,7 +91,7 @@ const Welcome = () => {
               <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
                 <span className="text-green-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' /></svg></span>
                 <span className="text-gray-700">Takes 15+ calls at a time</span>
-              </div>
+            </div>
               <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
                 <span className="text-green-500 mr-3"><svg xmlns='http://www.w3.org/2000/svg' className='inline w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' /></svg></span>
                 <span className="text-gray-700">Speaks 30 languages</span>
@@ -107,12 +107,12 @@ const Welcome = () => {
       <section className="py-16 bg-white dark:bg-gray-900">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Real Brands Have Real Numbers.
+            Why Having a Personal Phone Number is Important For Your Brand.
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-300 flex items-center justify-center gap-2">
             <span role="img" aria-label="phone">📞</span>
             A Real Number Builds Real Trust<br/>
-            Adding a phone number makes your store more feel legit. It boosts customer confidence, reduces abandoned carts, and shows there’s a real human behind the brand — even if they never call.
+            Adding a phone number makes your store more feel legit. It boosts customer confidence,handles customer inquiries & orders,calls abandoned carts, and shows there’s a real legitimicay and team behind the brand — even if they never call.
           </p>
         </div>
       </section>
@@ -227,9 +227,9 @@ const Welcome = () => {
                       <p className="text-sm text-blue-800 dark:text-blue-200">✅ Discount code 'WELCOME20' created and applied to new customers</p>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
+          </div>
           </div>
         </div>
       </section>

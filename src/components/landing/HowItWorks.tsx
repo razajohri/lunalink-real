@@ -13,7 +13,7 @@ const steps = [
   },
   {
     title: "Let AI Do the Work",
-    description: "LunaLink AI engages customers, recovers carts, and boosts your sales automatically!",
+    description: "LunaLink AI engages customers, calls left checkout carts, and boosts your sales automatically!",
     icon: "3"
   },
 ];
