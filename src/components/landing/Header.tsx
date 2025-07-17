@@ -46,7 +46,7 @@ const Header = () => {
               Features
             </button>
             <button
-              onClick={() => scrollToSection('how-it-works')}
+              onClick={() => scrollToSection('abandoned-cart-recovery')}
               className="text-gray-700 hover:text-blue-600 transition-colors"
             >
               How It Works
@@ -111,7 +111,7 @@ const Header = () => {
               Features
             </button>
             <button
-              onClick={() => scrollToSection('how-it-works')}
+              onClick={() => scrollToSection('abandoned-cart-recovery')}
               className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
             >
               How It Works

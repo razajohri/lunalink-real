@@ -103,6 +103,19 @@ const Welcome = () => {
           <span className="inline-block bg-green-100 text-green-700 text-2xl font-bold px-8 py-4 rounded-full shadow">You save <span className="text-3xl">83%</span> <span role="img" aria-label="money">🤑</span></span>
         </div>
       </section>
+      {/* Real Brands Have Real Numbers Section */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="max-w-2xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Real Brands Have Real Numbers.
+          </h2>
+          <p className="text-xl text-gray-700 dark:text-gray-300 flex items-center justify-center gap-2">
+            <span role="img" aria-label="phone">📞</span>
+            A Real Number Builds Real Trust<br/>
+            Adding a phone number makes your store more feel legit. It boosts customer confidence, reduces abandoned carts, and shows there’s a real human behind the brand — even if they never call.
+          </p>
+        </div>
+      </section>
       <Features />
       <HowItWorks />
       <div className="mt-14 mb-8 max-w-3xl mx-auto bg-blue-50 dark:bg-gray-800 border border-blue-200 dark:border-gray-700 rounded-2xl shadow-card p-8">
