@@ -49,18 +49,20 @@ const Welcome = () => {
       <Header />
       <Hero />
       {/* Abandoned Cart Recovery Audio Demo Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-2xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">
-            Listen: How Luna Recovers Abandoned Carts
-          </h2>
-          <div className="flex flex-col items-center">
-            <div className="bg-primary/10 rounded-full p-6 mb-4">
-              <ShoppingCart className="w-10 h-10 text-primary" />
+      <section className="py-24 bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="flex justify-center">
+          <div className="bg-white/90 dark:bg-gray-900/90 rounded-3xl shadow-2xl border border-blue-200 dark:border-gray-800 p-10 md:p-16 max-w-xl w-full flex flex-col items-center">
+            <div className="mb-8 flex flex-col items-center">
+              <div className="bg-gradient-to-br from-primary to-blue-500 p-6 rounded-full shadow-lg mb-4 animate-pulse">
+                <ShoppingCart className="w-14 h-14 text-white" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-blue-900 dark:text-blue-200 mb-2 text-center drop-shadow">
+                Listen: How Luna Calls Left Checkout Carts
+              </h2>
+              <div className="font-semibold mb-4 text-lg text-blue-700 dark:text-blue-100 text-center">Abandoned Cart Recovery Call Demo</div>
             </div>
-            <div className="font-semibold mb-4 text-lg">Abandoned Cart Recovery Call Demo</div>
-            <audio controls className="w-full max-w-md">
-              <source src="/abandoned-cart-demo.mp3" type="audio/mpeg" />
+            <audio controls className="w-full max-w-md rounded-lg overflow-hidden shadow-md bg-blue-100 dark:bg-gray-800">
+              <source src="https://docs.google.com/uc?export=download&id=1HoGBlXztixK3lJkaDY74lF8YPGDEtTpW" type="audio/mpeg" />
               Your browser does not support the audio element.
             </audio>
           </div>
