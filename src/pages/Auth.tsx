@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -25,6 +25,14 @@ const Auth = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { service, isConfigured, credentials } = useVapi();
+
+  const { user, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && user) {
+      navigate('/profile-setup');
+    }
+  }, [user, loading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -137,7 +145,7 @@ const Auth = () => {
             {!showForgotPassword && (
               <Button
                 type="button"
-                className="w-full bg-white text-gray-900 border border-gray-300 hover:bg-gray-100 flex items-center justify-center gap-2 mb-4 rounded-lg shadow-glow font-semibold"
+                className="w-full bg-white text-gray-900 border border-gray-300 hover:bg-gray-100 flex items-center justify-center gap-2 mb-4 rounded-lg font-semibold"
                 onClick={async () => {
                   setIsLoading(true);
                   try {
