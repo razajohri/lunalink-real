@@ -1,5 +1,6 @@
 import React from "react";
 import { PlayCircle, User, MessageSquare, Globe, Users, ShoppingBag, FileText, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const HowItWorks = () => (
   <section id="how-it-works" className="py-20 bg-white dark:bg-gray-900">
