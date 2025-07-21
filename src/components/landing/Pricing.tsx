@@ -43,10 +43,11 @@ const plans = [
       "All features included",
       "Order confirmation calls",
       "Premium AI voices",
-      "100+ calls per month",
+      "120+ calls per month",
       "Custom integrations",
       "Free phone number",
-      "30+ languages"
+      "30+ languages",
+      "MyShopifyBrain: Talk to your store with AI"
     ],
     popular: false,
     cta: "Onboard Now"
@@ -105,6 +106,12 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
+
+              {plan.name === 'Pro' && (
+                <div className="mb-4 text-blue-700 font-semibold text-center">
+                  Includes MyShopifyBrain: Talk to your store with AI
+                </div>
+              )}
 
               <Button
                 onClick={handleOnboard}
