@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Phone, MessageSquare, BarChart, Users, Sparkles } from "lucide-react";
+import { Phone, MessageSquare, BarChart, Users, Sparkles, ShoppingCart } from "lucide-react";
 import Header from "@/components/landing/Header";
 import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
@@ -48,6 +48,24 @@ const Welcome = () => {
     <>
       <Header />
       <Hero />
+      {/* Abandoned Cart Recovery Audio Demo Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-2xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            Listen: How Luna Recovers Abandoned Carts
+          </h2>
+          <div className="flex flex-col items-center">
+            <div className="bg-primary/10 rounded-full p-6 mb-4">
+              <ShoppingCart className="w-10 h-10 text-primary" />
+            </div>
+            <div className="font-semibold mb-4 text-lg">Abandoned Cart Recovery Call Demo</div>
+            <audio controls className="w-full max-w-md">
+              <source src="/abandoned-cart-demo.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </section>
       {/* ROI Comparison Section */}
       <section className="my-20">
         <div className="max-w-3xl mx-auto text-center">
