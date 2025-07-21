@@ -61,8 +61,9 @@ const Welcome = () => {
               </h2>
               <div className="font-semibold mb-4 text-lg text-blue-700 dark:text-blue-100 text-center">Abandoned Cart Recovery Call Demo</div>
             </div>
-            <audio controls className="w-full max-w-md rounded-lg overflow-hidden shadow-md bg-blue-100 dark:bg-gray-800">
+            <audio controls className="w-full max-w-md">
               <source src="https://docs.google.com/uc?export=download&id=1HoGBlXztixK3lJkaDY74lF8YPGDEtTpW" type="audio/mpeg" />
+              
               Your browser does not support the audio element.
             </audio>
           </div>
