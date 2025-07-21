@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import Auth from "./pages/Auth";
 import Landing from "./pages/Landing";
@@ -16,27 +16,42 @@ import ShopifyCallback from "./pages/ShopifyCallback";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import NotFound from "./pages/NotFound";
 import MyShopifyBrain from "./pages/MyShopifyBrain";
+import { useEffect } from "react";
 
-const App = () => (
-  <TooltipProvider>
-    <Routes>
-      <Route path="/" element={<Welcome />} />
-      <Route path="/welcome" element ={<Landing />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/auth" element={<Auth />} />
-      <Route path="/profile-setup" element={<ProfileSetup />} />
-      <Route path="/voice-agents" element={<VoiceAgents />} />
-      <Route path="/call-logs" element={<CallLogs />} />
-      <Route path="/analytics" element={<Analytics />} />
-      <Route path="/billing" element={<Billing />} />
-      <Route path="/settings" element={<Settings />} />
-      <Route path="/payment-success" element={<PaymentSuccess />} />
-      <Route path="/shopify/callback" element={<ShopifyCallback />} />
-      <Route path="/my-shopify-brain" element={<MyShopifyBrain />} />
-      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </TooltipProvider>
-);
+function usePageViews() {
+  const location = useLocation();
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('config', 'G-9NCNCWFRLF', {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location]);
+}
+
+const App = () => {
+  usePageViews();
+  return (
+    <TooltipProvider>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/welcome" element ={<Landing />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/profile-setup" element={<ProfileSetup />} />
+        <Route path="/voice-agents" element={<VoiceAgents />} />
+        <Route path="/call-logs" element={<CallLogs />} />
+        <Route path="/analytics" element={<Analytics />} />
+        <Route path="/billing" element={<Billing />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/shopify/callback" element={<ShopifyCallback />} />
+        <Route path="/my-shopify-brain" element={<MyShopifyBrain />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </TooltipProvider>
+  );
+};
 
 export default App;
