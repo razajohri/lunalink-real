@@ -62,8 +62,8 @@ const Welcome = () => {
               <div className="font-semibold mb-4 text-lg text-blue-700 dark:text-blue-100 text-center">Abandoned Cart Recovery Call Demo</div>
             </div>
             <audio controls className="w-full max-w-md">
-              <source src="https://docs.google.com/uc?export=download&id=1HoGBlXztixK3lJkaDY74lF8YPGDEtTpW" type="audio/mpeg" />
-              
+              <source src="/abandoned-cart-demo.mp3" type="audio/mpeg" />
+
               Your browser does not support the audio element.
             </audio>
           </div>
