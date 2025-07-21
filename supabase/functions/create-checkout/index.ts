@@ -63,7 +63,7 @@ serve(async (req) => {
       logStep("Creating new customer");
     }
 
-    const origin = req.headers.get("origin") || "https://lunalink-real.lovable.app";
+    const origin = req.headers.get("origin") || "https://www.lunalinkai.com";
 
     const session = await stripe.checkout.sessions.create({
       customer: customerId,

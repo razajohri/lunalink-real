@@ -137,9 +137,9 @@ const Header = () => {
             <Button
               onClick={() => window.open('https://youtube.com/playlist?list=PLEi7sibV01icwLju2cG0z5XX8PdqMa968&si=-1cocul_56u_jR-y', '_blank')}
               className="bg-blue-600 hover:bg-blue-700 text-white transition-colors"
-            >
+  >
               Demo Video
-            </Button>
+</Button>
             <Button
               onClick={handleOnboardNow}
               className="w-full bg-blue-600 hover:bg-blue-700 transition-colors"

@@ -8,7 +8,7 @@ const corsHeaders = {
 
 serve(async (req) => {
   console.log('Shopify callback function called:', req.method, req.url)
-  
+
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
@@ -17,7 +17,7 @@ serve(async (req) => {
     const url = new URL(req.url)
     console.log('Full URL:', url.href)
     console.log('Search params:', url.searchParams.toString())
-    
+
     const code = url.searchParams.get('code')
     const shop = url.searchParams.get('shop')
     const state = url.searchParams.get('state') // This is the user_id
@@ -31,7 +31,7 @@ serve(async (req) => {
         status: 302,
         headers: {
           ...corsHeaders,
-          'Location': 'https://lunalink-real.lovable.app/dashboard?error=oauth_failed'
+          'Location': 'https://www.lunalinkai.com/dashboard?error=oauth_failed'
         }
       })
     }
@@ -41,7 +41,7 @@ serve(async (req) => {
         status: 302,
         headers: {
           ...corsHeaders,
-          'Location': 'https://lunalink-real.lovable.app/dashboard?error=missing_params'
+          'Location': 'https://www.lunalinkai.com/dashboard?error=missing_params'
         }
       })
     }
@@ -65,7 +65,7 @@ serve(async (req) => {
         status: 302,
         headers: {
           ...corsHeaders,
-          'Location': 'https://lunalink-real.lovable.app/dashboard?error=token_exchange_failed'
+          'Location': 'https://www.lunalinkai.com/dashboard?error=token_exchange_failed'
         }
       })
     }
@@ -78,7 +78,7 @@ serve(async (req) => {
         status: 302,
         headers: {
           ...corsHeaders,
-          'Location': 'https://lunalink-real.lovable.app/dashboard?error=no_access_token'
+          'Location': 'https://www.lunalinkai.com/dashboard?error=no_access_token'
         }
       })
     }
@@ -89,7 +89,7 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
     console.log('Supabase URL exists:', !!supabaseUrl)
     console.log('Supabase Key exists:', !!supabaseKey)
-    
+
     const supabase = createClient(
       supabaseUrl ?? '',
       supabaseKey ?? ''
@@ -114,7 +114,7 @@ serve(async (req) => {
         status: 302,
         headers: {
           ...corsHeaders,
-          'Location': 'https://lunalink-real.lovable.app/dashboard?error=db_save_failed'
+          'Location': 'https://www.lunalinkai.com/dashboard?error=db_save_failed'
         }
       })
     }
@@ -126,7 +126,7 @@ serve(async (req) => {
       status: 302,
       headers: {
         ...corsHeaders,
-        'Location': 'https://lunalink-real.lovable.app/dashboard?success=shopify_connected'
+        'Location': 'https://www.lunalinkai.com/dashboard?success=shopify_connected'
       }
     })
 
@@ -136,7 +136,7 @@ serve(async (req) => {
       status: 302,
       headers: {
         ...corsHeaders,
-        'Location': 'https://lunalink-real.lovable.app/dashboard?error=unexpected_error'
+        'Location': 'https://www.lunalinkai.com/dashboard?error=unexpected_error'
       }
     })
   }
