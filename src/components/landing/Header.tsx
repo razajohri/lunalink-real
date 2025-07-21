@@ -80,6 +80,12 @@ const Header = () => {
               Call Demo
             </Button>
             <Button
+              onClick={() => window.open('https://youtube.com/playlist?list=PLEi7sibV01icwLju2cG0z5XX8PdqMa968&si=-1cocul_56u_jR-y', '_blank')}
+              className="bg-primary/10 text-primary border border-primary hover:bg-primary/20 transition-colors"
+            >
+              Demo Video
+            </Button>
+            <Button
               onClick={handleOnboardNow}
               className="bg-blue-600 hover:bg-blue-700 transition-colors"
             >
@@ -141,6 +147,12 @@ const Header = () => {
   >
   Call Demo
 </Button>
+            <Button
+              onClick={() => window.open('https://youtube.com/playlist?list=PLEi7sibV01icwLju2cG0z5XX8PdqMa968&si=-1cocul_56u_jR-y', '_blank')}
+              className="bg-primary/10 text-primary border border-primary hover:bg-primary/20 transition-colors"
+            >
+              Demo Video
+            </Button>
             <Button
               onClick={handleOnboardNow}
               className="w-full bg-blue-600 hover:bg-blue-700 transition-colors"

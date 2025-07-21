@@ -69,7 +69,7 @@ const Pricing = () => {
         <div className="text-center mb-16">
           <h2 className="section-title">Simple, Transparent Pricing</h2>
           <p className="section-subtitle">
-            All plans include free setup, dedicated phone number, and our "Done For You" service
+            All plans include setup, dedicated phone number, and our "Done For You" service
           </p>
         </div>
 

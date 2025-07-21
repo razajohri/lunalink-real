@@ -1,67 +1,62 @@
 import React from "react";
-
-const steps = [
-  {
-    title: "Install LunaLink AI",
-    description: "Add the app to your Shopify store in just a few clicks.",
-    icon: "1"
-  },
-  {
-    title: "Configure Your Preferences",
-    description: "Set your brand voice, product recommendations, and recovery strategies.",
-    icon: "2"
-  },
-  {
-    title: "Let AI Do the Work",
-    description: "LunaLink AI engages customers, calls left checkout carts, and boosts your sales automatically!",
-    icon: "3"
-  },
-];
+import { PlayCircle, User, MessageSquare, Globe, Users, ShoppingBag, FileText, Sparkles } from 'lucide-react';
 
 const HowItWorks = () => (
-  <section id="how-it-works" className="py-24 bg-gray-50">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          Get Started in Minutes
+  <section id="how-it-works" className="py-20 bg-white dark:bg-gray-900">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+      {/* Left: Headline and CTA */}
+      <div>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          How your AI phone support agent works:
         </h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Simple setup process that gets you up and running with AI-powered customer service
-        </p>
+        <Button
+          className="bg-primary text-white px-8 py-4 text-lg font-semibold rounded-lg shadow hover:bg-primary/90 transition mb-8"
+          onClick={() => window.location.href = '/auth'}
+        >
+          Try it out free – $0 today
+        </Button>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-        {steps.map((step, idx) => (
-          <div
-            key={idx}
-            className="relative group"
-          >
-            {/* Connection line */}
-            {idx < steps.length - 1 && (
-              <div className="hidden md:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-blue-200 to-transparent z-0"></div>
-            )}
-
-            <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group-hover:border-blue-200">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                <span className="text-white text-xl font-bold">{step.icon}</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center group-hover:text-blue-900 transition-colors duration-300">
-                {step.title}
-              </h3>
-              <p className="text-gray-600 text-center leading-relaxed">
-                {step.description}
-              </p>
-            </div>
+      {/* Right: Flowchart */}
+      <div className="flex flex-col items-center">
+        {/* Step 1 */}
+        <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-full px-6 py-3 mb-4 shadow">
+          <User className="w-5 h-5 mr-2 text-gray-500" />
+          <span className="text-gray-800 dark:text-gray-200 font-medium">Customer calls</span>
+        </div>
+        <div className="h-6 w-1 bg-gray-300 dark:bg-gray-700 mb-4"></div>
+        {/* Step 2 */}
+        <div className="flex items-center bg-primary/10 rounded-full px-6 py-3 mb-4 shadow">
+          <Sparkles className="w-5 h-5 mr-2 text-primary" />
+          <span className="text-primary font-medium">AI picks up and greets</span>
+        </div>
+        <div className="h-6 w-1 bg-gray-300 dark:bg-gray-700 mb-4"></div>
+        {/* Step 3 */}
+        <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-full px-6 py-3 mb-4 shadow">
+          <MessageSquare className="w-5 h-5 mr-2 text-gray-500" />
+          <span className="text-gray-800 dark:text-gray-200 font-medium">Customer asks question</span>
+        </div>
+        <div className="h-6 w-1 bg-gray-300 dark:bg-gray-700 mb-4"></div>
+        {/* Step 4: Sources */}
+        <div className="text-gray-600 dark:text-gray-300 mb-2">AI checks all sources:</div>
+        <div className="flex flex-wrap justify-center gap-3 mb-4">
+          <div className="flex items-center bg-primary/10 rounded-full px-4 py-2">
+            <Globe className="w-4 h-4 mr-1 text-primary" /> Website
           </div>
-        ))}
-      </div>
-
-      <div className="text-center mt-16">
-        <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-6 py-3 rounded-full text-sm font-medium">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          No coding required • Works with any Shopify store
+          <div className="flex items-center bg-primary/10 rounded-full px-4 py-2">
+            <Users className="w-4 h-4 mr-1 text-primary" /> Customers
+          </div>
+          <div className="flex items-center bg-primary/10 rounded-full px-4 py-2">
+            <ShoppingBag className="w-4 h-4 mr-1 text-primary" /> Orders
+          </div>
+          <div className="flex items-center bg-primary/10 rounded-full px-4 py-2">
+            <FileText className="w-4 h-4 mr-1 text-primary" /> Docs
+          </div>
+        </div>
+        <div className="h-6 w-1 bg-gray-300 dark:bg-gray-700 mb-4"></div>
+        {/* Step 5 */}
+        <div className="flex items-center bg-primary/10 rounded-full px-6 py-3 shadow">
+          <Sparkles className="w-5 h-5 mr-2 text-primary" />
+          <span className="text-primary font-medium">AI answers perfectly</span>
         </div>
       </div>
     </div>

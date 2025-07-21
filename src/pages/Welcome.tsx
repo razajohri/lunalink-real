@@ -235,6 +235,9 @@ const Welcome = () => {
       <Pricing />
       <FAQ />
       <Footer />
+      <div className="w-full py-6 bg-blue-50 dark:bg-gray-900 border-t border-blue-100 dark:border-gray-800 text-center">
+        <span className="text-lg font-semibold text-blue-900 dark:text-blue-200">Refer our product to an ecom store or Shopify merchant and earn <span className="text-green-600">20%</span> on each sale!</span>
+      </div>
     </>
   );
 };

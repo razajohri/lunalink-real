@@ -65,8 +65,11 @@ const Pricing = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-2">
             Choose the perfect plan for your business. All plans include a 14-day free trial.
+          </p>
+          <p className="text-lg text-green-700 font-semibold mb-8">
+            48 hours money back guarantee – so it's risk free!
           </p>
         </div>
 
