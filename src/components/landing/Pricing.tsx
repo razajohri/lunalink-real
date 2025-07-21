@@ -65,9 +65,6 @@ const Pricing = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-2">
-            48 hours money back guarantee – so it's risk free!
-          </p>
           <p className="text-lg text-green-700 font-semibold mb-8">
             48 hours money back guarantee – so it's risk free!
           </p>
