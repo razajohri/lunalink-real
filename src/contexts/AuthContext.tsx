@@ -12,6 +12,7 @@ interface AuthContextType {
   resetPassword: (email: string) => Promise<{ error: any }>;
   updateProfile: (data: { first_name?: string; last_name?: string; company?: string; phone?: string }) => Promise<{ error: any }>;
   getProfile: () => Promise<any>;
+  signInWithGoogle: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -43,7 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signUp = async (email: string, password: string, firstName: string, lastName: string) => {
     const redirectUrl = `${window.location.origin}/auth`;
-    
+
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -55,7 +56,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       }
     });
-    
+
     return { error };
   };
 
@@ -74,35 +75,45 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const resetPassword = async (email: string) => {
     const redirectUrl = `${window.location.origin}/auth`;
-    
+
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: redirectUrl,
     });
-    
+
     return { error };
   };
 
   const updateProfile = async (data: { first_name?: string; last_name?: string; company?: string; phone?: string }) => {
     if (!user) return { error: 'No user logged in' };
-    
+
     const { error } = await supabase
       .from('profiles')
       .update(data)
       .eq('user_id', user.id);
-    
+
     return { error };
   };
 
   const getProfile = async () => {
     if (!user) return { data: null, error: 'No user logged in' };
-    
+
     const { data, error } = await supabase
       .from('profiles')
       .select('*')
       .eq('user_id', user.id)
       .single();
-    
+
     return { data, error };
+  };
+
+  const signInWithGoogle = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: window.location.origin + '/profile-setup',
+      },
+    });
+    if (error) throw error;
   };
 
   const value = {
@@ -115,6 +126,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     resetPassword,
     updateProfile,
     getProfile,
+    signInWithGoogle,
   };
 
   return (
