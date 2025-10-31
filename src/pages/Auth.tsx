@@ -21,7 +21,7 @@ const Auth = () => {
     lastName: '',
   });
 
-  const { signUp, signIn, resetPassword, signInWithGoogle } = useAuth();
+  const { signUp, signIn, resetPassword } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
   const { service, isConfigured, credentials } = useVapi();
@@ -141,25 +141,7 @@ const Auth = () => {
               </div>
             </div>
 
-            {/* Google Sign-In Button */}
-            {!showForgotPassword && (
-              <Button
-                type="button"
-                className="w-full bg-white text-gray-900 border border-gray-300 hover:bg-gray-100 flex items-center justify-center gap-2 mb-4 rounded-lg font-semibold"
-                onClick={async () => {
-                  setIsLoading(true);
-                  try {
-                    await signInWithGoogle();
-                  } finally {
-                    setIsLoading(false);
-                  }
-                }}
-                disabled={isLoading}
-              >
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
-                {isLogin ? 'Sign in with Google' : 'Sign up with Google'}
-              </Button>
-            )}
+            {/* OAuth options removed */}
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
