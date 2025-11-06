@@ -78,8 +78,12 @@ const ShopifyCallback = () => {
 
   const handleOAuthCallback = async (code: string, shop: string, state: string) => {
     try {
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      if (!supabaseUrl) {
+        throw new Error('Missing VITE_SUPABASE_URL environment variable');
+      }
       // Call our edge function directly
-      const response = await fetch(`https://drnhhpaazbiujxdradtz.supabase.co/functions/v1/shopify-callback?code=${code}&shop=${shop}&state=${state}`, {
+      const response = await fetch(`${supabaseUrl}/functions/v1/shopify-callback?code=${code}&shop=${shop}&state=${state}`, {
         method: 'GET',
       });
       
